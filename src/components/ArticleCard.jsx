@@ -19,7 +19,7 @@ function ArticleCard({ title, description, author, image, _id, city }) {
         <img src={image} alt="" />
       </picture>
       <div className="article-interactions">
-        <ArticleInteraction />
+        <ArticleInteraction _id={_id} />
         <div className="article-location">
           {city.cityName}, {city.country.countryName}
         </div>

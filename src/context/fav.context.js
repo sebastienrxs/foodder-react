@@ -22,7 +22,6 @@ const FavContextWrapper = ({ children }) => {
   const getUserFavorites = useCallback(() => {
     const storedToken = getToken()
     if (user) {
-      console.log("user.payload.username", user.payload.username)
       axios
         .get(`${API_URL}/favorites/${user.payload.username}`, {
           headers: { Authorization: `Bearer ${storedToken}` },

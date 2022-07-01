@@ -34,7 +34,6 @@ function FeedPage() {
   return (
     <div className="FeedPage">
       <h1>FeedPage</h1>
-      {/* <p>You are logged in as {user.payload.username} </p> */}
 
       {articles.map((article) => {
         // console.log("article:", article)
