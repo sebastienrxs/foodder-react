@@ -18,7 +18,6 @@ function HomePage() {
   return (
     <main>
       <h1>HomePage</h1>
-      <AddressAutocomplete />
     </main>
   )
 }

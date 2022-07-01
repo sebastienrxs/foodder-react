@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import NavbarApp from "./components/NavbarApp"
 import NewArticlePage from "./pages/NewArticlePage"
+import IsPrivate from "./components/IsPrivate"
 
 function App() {
   return (
@@ -19,8 +20,22 @@ function App() {
         <Route path="/" element={<NavbarApp />}>
           <Route path="signup" element={<SignupPage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="feed" element={<FeedPage />} />
-          <Route path="new-post" element={<NewArticlePage />} />
+          <Route
+            path="feed"
+            element={
+              <IsPrivate>
+                <FeedPage />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="new-post"
+            element={
+              <IsPrivate>
+                <NewArticlePage />
+              </IsPrivate>
+            }
+          />
         </Route>
       </Routes>
     </div>

@@ -18,13 +18,13 @@ function Navbar() {
         </>
       ) : (
         <>
+          <nav>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Sign Up</Link>
+          </nav>
           <main>
             <Outlet />
           </main>
-          <nav>
-            <Link to="/signup">Sign Up</Link>
-            <Link to="/login">Login</Link>
-          </nav>
         </>
       )}
       {/* <Link to="/">Home</Link> */}
