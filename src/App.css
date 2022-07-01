@@ -1,3 +1,10 @@
+/* VARIABLES */
+
+:root {
+  --accent-color-2: #7b5400;
+  --grey-300: #E0E0E0;
+}
+
 .App {
   text-align: center;
 }
@@ -39,4 +46,51 @@
 
 form {
   display:  block;
+}
+
+/* FEEDPAGE */
+.FeedPage {
+  margin: auto;
+}
+
+/* ARTICLE */
+.ArticleCard {
+width: 400px;
+border: 4px solid rgb(97, 97, 97);
+position: relative;
+margin-bottom: 2rem;
+}
+.author-info {
+  display: flex;
+  margin-bottom: 2rem;
+}
+.author-img img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color-2);
+    position: relative;
+    top: 10px;
+}
+
+.article-img img {
+  width: 100%;
+}
+
+.article-text {
+  text-align: left;
+  margin: 0rem 1rem 2rem 1rem;
+}
+
+.article-interactions {
+  display: flex;
+  margin-left: 2rem;
+}
+.article-commands .icon {
+  margin-right: 1rem;
+}
+
+
+.article-location {
+  background-color: var(--grey-300);
 }

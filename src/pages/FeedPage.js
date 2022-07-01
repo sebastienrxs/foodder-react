@@ -11,31 +11,25 @@ function FeedPage() {
   const [articles, setArticles] = useState([])
   const { getToken } = useContext(AuthContext)
 
-  const getAllArticles = useCallback(() => {
-    const storedToken = getToken()
-
+  const getAllArticles = () => {
     axios
-      .get(`${API_URL}/api/articles`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
+      .get(`${API_URL}/api/articles`, {})
       .then((response) => setArticles(response.data))
       .catch((error) => console.log(error))
-  }, [getToken])
+  }
 
-  // We set this effect will run only once, after the initial render
-  // by setting the empty dependency array - []
   useEffect(() => {
     getAllArticles()
-  }, [getAllArticles])
+  }, [])
 
   return (
-    <div className="">
+    <div className="FeedPage">
       <h1>FeedPage</h1>
       {/* <p>You are logged in as {user.payload.username} </p> */}
 
-      {articles.map((article) => (
-        <ArticleCard key={article._id} {...article} />
-      ))}
+      {articles.map((article) => {
+        return <ArticleCard key={article._id} {...article} />
+      })}
     </div>
   )
 }
