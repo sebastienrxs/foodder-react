@@ -30,7 +30,7 @@ function FeedPage() {
       {/* <p>You are logged in as {user.payload.username} </p> */}
 
       {articles.map((article) => {
-        // console.log("article:", article)
+        console.log("article:", article)
         return <ArticleCard key={article._id} {...article} />
       })}
     </div>
