@@ -40,7 +40,7 @@ const AuthContextWrapper = ({ children }) => {
     axios({
       method: "get",
       baseURL: API_URL,
-      url: "/api/auth/verify",
+      url: "/auth/verify",
       headers: {
         Authorization: `Bearer ${token}`,
       },
