@@ -10,7 +10,7 @@ function Navbar() {
       {isLoggedIn ? (
         <>
           <nav>
-            <Link to="/">Home</Link>
+            <Link to="/">Home Is LoggedIn</Link>
           </nav>
           <main>
             <Outlet />

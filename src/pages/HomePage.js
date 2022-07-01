@@ -18,8 +18,6 @@ function HomePage() {
   return (
     <main>
       <h1>HomePage</h1>
-      <Link to="/login">LOGIN </Link>
-      <Link to="/signup">SIGNUP</Link>
       <AddressAutocomplete />
     </main>
   )
