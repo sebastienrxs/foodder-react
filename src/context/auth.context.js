@@ -9,7 +9,7 @@ const AuthContextWrapper = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [user, setUser] = useState(null)
-  console.log("user:", user)
+  // console.log("user:", user)
 
   const storeToken = (token) => {
     localStorage.setItem(TOKEN_STORAGE_KEY, token)
@@ -47,7 +47,7 @@ const AuthContextWrapper = ({ children }) => {
     })
       .then((response) => {
         setUser(response.data)
-        console.log("response.data:", response.data)
+        // console.log("response.data:", response.data)
         setIsLoggedIn(true)
         setIsLoading(false)
       })

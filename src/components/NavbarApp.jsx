@@ -9,6 +9,7 @@ function Navbar() {
     <>
       <nav>
         <Link to="/feed">Feed </Link>
+        <Link to="/new-post">New post </Link>
       </nav>
       <main>
         <Outlet />
