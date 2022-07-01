@@ -10,12 +10,17 @@ function FeedPage() {
   const { user, isLoggedIn, isLoading } = useContext(AuthContext)
 
   const [articles, setArticles] = useState([])
-  // console.log("articles:", articles)
+  console.log("articles:", articles)
   const { getToken } = useContext(AuthContext)
 
   const getAllArticles = () => {
+    const storedToken = getToken()
+    console.log("storedToken:", storedToken)
+
     axios
-      .get(`${API_URL}/articles`)
+      .get(`${API_URL}/articles`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => setArticles(response.data))
       .catch((error) => console.log(error))
   }
