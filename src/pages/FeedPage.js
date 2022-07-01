@@ -10,7 +10,7 @@ function FeedPage() {
   const { user, isLoggedIn, isLoading } = useContext(AuthContext)
 
   const [articles, setArticles] = useState([])
-  console.log("articles:", articles)
+  // console.log("articles:", articles)
   const { getToken } = useContext(AuthContext)
 
   const getAllArticles = () => {
@@ -30,7 +30,7 @@ function FeedPage() {
       {/* <p>You are logged in as {user.payload.username} </p> */}
 
       {articles.map((article) => {
-        console.log("article:", article)
+        // console.log("article:", article)
         return <ArticleCard key={article._id} {...article} />
       })}
     </div>
