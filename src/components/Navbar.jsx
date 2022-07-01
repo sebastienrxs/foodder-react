@@ -6,17 +6,39 @@ function Navbar() {
   const { isLoggedIn, user, removeToken } = useContext(AuthContext)
 
   return (
-    <nav>
-      <Link to="/">Home</Link>
+    <>
+      {isLoggedIn ? (
+        <>
+          <nav>
+            <Link to="/">Home</Link>
+          </nav>
+          <main>
+            <Outlet />
+          </main>
+        </>
+      ) : (
+        <>
+          <main>
+            <Outlet />
+          </main>
+          <nav>
+            <Link to="/signup">Sign Up</Link>
+            <Link to="/login">Login</Link>
+          </nav>
+        </>
+      )}
+      {/* <Link to="/">Home</Link> */}
 
-      {!isLoggedIn && (
+      {/* {!isLoggedIn && (
         <>
           <Link to="/signup">Sign Up</Link>
           <Link to="/login">Login</Link>
-          <Outlet />
         </>
       )}
-    </nav>
+      <main>
+        <Outlet />
+      </main> */}
+    </>
   )
 }
 

@@ -23,7 +23,7 @@ function SignupPage(props) {
     e.preventDefault()
 
     axios({
-      url: "/api/auth/signup",
+      url: "/auth/signup",
       baseURL: API_URL,
       method: "post",
       data: {

@@ -20,7 +20,7 @@ function LoginPage(props) {
     e.preventDefault()
 
     axios({
-      url: "/api/auth/login",
+      url: "/auth/login",
       baseURL: API_URL,
       method: "post",
       data: {
