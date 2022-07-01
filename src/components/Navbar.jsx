@@ -7,37 +7,14 @@ function Navbar() {
 
   return (
     <>
-      {isLoggedIn ? (
-        <>
-          <nav>
-            <Link to="/">Home Is LoggedIn</Link>
-          </nav>
-          <main>
-            <Outlet />
-          </main>
-        </>
-      ) : (
-        <>
-          <nav>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
-          </nav>
-          <main>
-            <Outlet />
-          </main>
-        </>
-      )}
-      {/* <Link to="/">Home</Link> */}
-
-      {/* {!isLoggedIn && (
-        <>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/login">Login</Link>
-        </>
-      )}
+      <nav>
+        <Link to="/">Home </Link>
+        <Link to="/login">Login </Link>
+        <Link to="/signup">Sign Up </Link>
+      </nav>
       <main>
         <Outlet />
-      </main> */}
+      </main>
     </>
   )
 }
