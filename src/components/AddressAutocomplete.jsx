@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import PlacesAutocomplete, { geocodeByAddress } from "react-places-autocomplete"
 import axios from "axios"
 import { API_URL } from "../utils/constants"
@@ -6,12 +6,21 @@ import { API_URL } from "../utils/constants"
 // const baseUrl = process.env.REACT_APP_BACKEND_URL
 
 function AddressAutocomplete() {
-  const [address, setAddress] = React.useState("")
-  const [data, setData] = React.useState({})
+  // States for Google API's input -> Search for city
+  const [address, setAddress] = useState("")
+  const [data, setData] = useState({})
+
+  // States for the other inputs of the form
+  const [formValues, setFormValues] = useState({
+    title: "",
+    description: "",
+    image: "",
+    isPrivate: false,
+  })
+  console.log("formValues:", formValues)
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value)
-    console.log("results:", results)
 
     const adressComponent = results[0].address_components
     const myObject = {}
@@ -29,10 +38,8 @@ function AddressAutocomplete() {
         myObject.city = element.long_name
       }
     }
-    console.log("myObject:", myObject)
     setData(myObject)
     setAddress(value)
-    console.log("value:", value)
   }
 
   // Send data to the backend with axios
@@ -40,13 +47,21 @@ function AddressAutocomplete() {
     try {
       console.log(data)
       e.preventDefault()
-      const dataToSend = { ...data, title: "Test Test", image: "no-image" }
+
+      const fd = new FormData()
+      const dataToSend = {
+        ...data,
+        title: formValues.title,
+        description: formValues.description,
+        image: formValues.image,
+        private: formValues.isPrivate,
+      }
+      console.log("dataToSend:", dataToSend)
 
       const res = await axios.post(
         "http://localhost:5005/api/articles",
         dataToSend
       )
-      console.log("data:", res.data)
     } catch (err) {
       console.log(err)
     }
@@ -67,9 +82,76 @@ function AddressAutocomplete() {
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <form onSubmit={handleSubmit}>
-            <input
-              {...getInputProps({ placeholder: "Type city or address" })}
-            />
+            {/* Post Title */}
+            <div className="form-input">
+              <input
+                type="text"
+                name="title"
+                value={formValues.title}
+                onChange={(e) => {
+                  setFormValues({
+                    ...formValues,
+                    [e.target.name]: e.target.value,
+                  })
+                }}
+                placeholder="Title of your dish"
+              />
+            </div>
+
+            {/* Description */}
+            <div className="form-input">
+              <input
+                type="text"
+                name="description"
+                value={formValues.description}
+                onChange={(e) => {
+                  setFormValues({
+                    ...formValues,
+                    [e.target.name]: e.target.value,
+                  })
+                }}
+                placeholder="Write a nice description :)"
+              />
+            </div>
+
+            {/* Image to upload */}
+            <div className="form-input">
+              <input
+                type="file"
+                name="image"
+                src={formValues.image}
+                onChange={(e) => {
+                  console.log(">>>>>>", e.target.value)
+                  setFormValues({
+                    ...formValues,
+                    [e.target.name]: e.target.value,
+                  })
+                }}
+              />
+            </div>
+
+            {/* Is the post private ? */}
+            <div className="form-input">
+              <label htmlFor="">Is your post private?</label>
+              <input
+                type="checkbox"
+                name="isPrivate"
+                value={formValues.isPrivate}
+                onChange={(e) => {
+                  setFormValues({
+                    ...formValues,
+                    [e.target.name]: e.target.checked,
+                  })
+                }}
+              />
+            </div>
+
+            {/* City - Google API */}
+            <div className="form-input">
+              <input
+                {...getInputProps({ placeholder: "Type city or address" })}
+              />
+            </div>
 
             <div>
               {loading ? <div>...loading</div> : null}
