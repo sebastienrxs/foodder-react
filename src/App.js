@@ -1,12 +1,16 @@
-import logo from "./logo.svg"
 import "./App.css"
+import { Routes, Route } from "react-router-dom"
+
+// Pages
+import NewArticlePage from "./pages/NewArticlePage"
 import SignupPage from "./pages/SignupPage"
 import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
 import FeedPage from "./pages/FeedPage"
-import { Routes, Route } from "react-router-dom"
+import ResetPasswordPage from "./pages/ResetPasswordPage"
+
+// Components
 import NavbarApp from "./components/NavbarApp"
-import NewArticlePage from "./pages/NewArticlePage"
 import IsPrivate from "./components/IsPrivate"
 import NavbarHome from "./components/NavbarHome"
 
@@ -18,6 +22,7 @@ function App() {
           <Route path="" element={<HomePage />} />
           <Route path="signup" element={<SignupPage />} />
           <Route path="login" element={<LoginPage />} />
+          <Route path="reset-password" element={<ResetPasswordPage />} />
         </Route>
         <Route path="/" element={<NavbarApp />}>
           <Route
