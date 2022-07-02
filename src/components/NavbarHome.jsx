@@ -1,29 +1,39 @@
-import { Navbar } from "flowbite-react"
+import { Button, Navbar } from "flowbite-react"
 import { Link, Outlet } from "react-router-dom"
-
+import logo from "../assets/logo.png"
 function NavbarHome() {
   return (
     <>
       <Navbar fluid={true} rounded={true}>
-        <Navbar.Brand href="https://flowbite.com/">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="mr-3 h-6 sm:h-9"
-            alt="Flowbite Logo"
-          />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Flowbite
-          </span>
+        <Navbar.Brand>
+          <Link to="/" className="flex">
+            <img src={logo} className="mr-3 h-6 sm:h-9" alt="Foodder Logo" />
+            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+              Foodder
+            </span>
+          </Link>
         </Navbar.Brand>
-        <Navbar.Toggle />
+        <div className="flex md:order-2">
+          <Link
+            to="/signup"
+            class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          >
+            Sign-up
+          </Link>
+
+          <Link
+            to="/login"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-7 py-2.5 mr-2 mb-2 ml-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          >
+            Login
+          </Link>
+
+          <Navbar.Toggle />
+        </div>
         <Navbar.Collapse>
-          <Navbar.Link href="/navbars" active={true}>
+          {/* <Navbar.Link href="/" active={true}>
             Home
-          </Navbar.Link>
-          <Navbar.Link href="/navbars">About</Navbar.Link>
-          <Navbar.Link href="/navbars">Services</Navbar.Link>
-          <Navbar.Link href="/navbars">Pricing</Navbar.Link>
-          <Navbar.Link href="/navbars">Contact</Navbar.Link>
+          </Navbar.Link> */}
         </Navbar.Collapse>
       </Navbar>
       <main>

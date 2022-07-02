@@ -8,6 +8,7 @@ import { API_URL } from "../utils/constants"
 import { UserIcon } from "@heroicons/react/solid"
 import { LockOpenIcon } from "@heroicons/react/solid"
 
+// Page
 function LoginPage(props) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -17,7 +18,8 @@ function LoginPage(props) {
 
   const navigate = useNavigate()
 
-  const handleEmail = (e) => setUsername(e.target.value)
+  // Handle inputs + submit
+  const handleUsername = (e) => setUsername(e.target.value)
   const handlePassword = (e) => setPassword(e.target.value)
 
   const handleLoginSubmit = (e) => {
@@ -43,14 +45,10 @@ function LoginPage(props) {
   return (
     <div className="LoginPage">
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <div className="flex h-screen">
-        <div
-          className="m-auto flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg drop-shadow-md
-
-"
-        >
-          <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl ">
-            Login To Your Account
+      <div className="flex mt-20">
+        <div className="m-auto flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg drop-shadow-md border-t-4 border-blue-500">
+          <div className="self-center mb-6 text-xl font-medium text-gray-600 sm:text-2xl ">
+            <h1>Login To Your Account</h1>
           </div>
           <div className="mt-8">
             <form onSubmit={handleLoginSubmit}>
@@ -64,8 +62,8 @@ function LoginPage(props) {
                     type="text"
                     name="username"
                     value={username}
-                    onChange={handleEmail}
-                    className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    onChange={handleUsername}
+                    className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                     placeholder="Username"
                   />
                 </div>
@@ -81,7 +79,7 @@ function LoginPage(props) {
                     name="password"
                     value={password}
                     onChange={handlePassword}
-                    className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                     placeholder="Password"
                   />
                 </div>
@@ -99,7 +97,7 @@ function LoginPage(props) {
               <div className="flex w-full">
                 <button
                   type="submit"
-                  className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                  className="py-2 px-4  bg-blue-700 hover:bg-blue-800 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                 >
                   Login
                 </button>

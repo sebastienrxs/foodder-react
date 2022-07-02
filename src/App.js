@@ -12,7 +12,7 @@ import NavbarHome from "./components/NavbarHome"
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-gradient-to-b from-sky-100 to-sky-10">
       <Routes>
         <Route path="/" element={<NavbarHome />}>
           <Route path="" element={<HomePage />} />
