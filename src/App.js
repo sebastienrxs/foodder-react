@@ -5,16 +5,16 @@ import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
 import FeedPage from "./pages/FeedPage"
 import { Routes, Route } from "react-router-dom"
-import Navbar from "./components/Navbar"
 import NavbarApp from "./components/NavbarApp"
 import NewArticlePage from "./pages/NewArticlePage"
 import IsPrivate from "./components/IsPrivate"
+import NavbarHome from "./components/NavbarHome"
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Navbar />}>
+        <Route path="/" element={<NavbarHome />}>
           <Route path="" element={<HomePage />} />
           <Route path="signup" element={<SignupPage />} />
           <Route path="login" element={<LoginPage />} />
