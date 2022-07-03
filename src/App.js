@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage"
 import FeedPage from "./pages/FeedPage"
 import ProfilePage from "./pages/ProfilePage"
 import ResetPasswordPage from "./pages/ResetPasswordPage"
+import ArticleDetailsPage from "./pages/ArticleDetailsPage"
 
 // Components
 import NavbarApp from "./components/NavbarApp"
@@ -51,6 +52,14 @@ function App() {
             element={
               <IsPrivate>
                 <ProfilePage />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="articles/:articleId"
+            element={
+              <IsPrivate>
+                <ArticleDetailsPage />
               </IsPrivate>
             }
           />
