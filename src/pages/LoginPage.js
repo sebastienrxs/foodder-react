@@ -50,9 +50,9 @@ function LoginPage(props) {
   }
 
   return (
-    <div className="LoginPage">
+    <div className="LoginPage pt-24">
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <div className="flex mt-20">
+      <div className="flex">
         <div className="m-auto flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg drop-shadow-md border-t-4 border-blue-500">
           <div className="self-center mb-6 text-xl font-medium text-gray-600 sm:text-2xl ">
             <h1>Login To Your Account</h1>
@@ -116,11 +116,11 @@ function LoginPage(props) {
                   <button
                     disabled
                     type="button"
-                    class="py-2 px-4 mt-2 bg-gray-400 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
+                    className="py-2 px-4 mt-2 bg-gray-400 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
                   >
                     <svg
                       role="status"
-                      class="inline w-4 h-4 mr-3 text-white animate-spin"
+                      className="inline w-4 h-4 mr-3 text-white animate-spin"
                       viewBox="0 0 100 101"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"

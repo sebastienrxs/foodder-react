@@ -32,14 +32,12 @@ function FeedPage() {
   }, [])
 
   return (
-    <div className="FeedPage">
-      <h1>FeedPage</h1>
-
+    <section className="FeedPage relative mt-24 w-max m-auto">
       {articles.map((article) => {
         // console.log("article:", article)
         return <ArticleCard key={article._id} {...article} />
       })}
-    </div>
+    </section>
   )
 }
 

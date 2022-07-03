@@ -18,34 +18,34 @@ function HomePage() {
 
   return (
     <>
-      <section class="bg-gradient-to-b from-sky-100 to-sky-10">
-        <div class="py-8 px-4 mx-auto pt-20 max-w-screen-xl text-center lg:py-16 lg:px-12">
-          <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+      <section className="bg-gradient-to-b from-sky-100 to-sky-10">
+        <div className="py-8 px-4 mx-auto pt-20 max-w-screen-xl text-center lg:py-16 lg:px-12">
+          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
             Share and discover the best culinary experiences.
           </h1>
-          <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
+          <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
             Share the best things you ate. Discover your next favorite dish.
           </p>
-          <div class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+          <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
             <Link
               to="/signup"
-              class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+              className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
             >
               Create an account
               <ChevronRightIcon className=" ml-4 w-5 h-5" />
             </Link>
           </div>
-          <div class="px-4 mx-auto mt-20 text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36">
-            <span class="font-semibold text-gray-400 uppercase">
+          <div className="px-4 mx-auto mt-20 text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36">
+            <span className="font-semibold text-gray-400 uppercase">
               FEATURED IN
             </span>
-            <div class="flex flex-wrap justify-center items-center mt-8 text-gray-500 sm:justify-between">
+            <div className="flex flex-wrap justify-center items-center mt-8 text-gray-500 sm:justify-between">
               <a
                 href="#"
-                class="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400"
+                className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400"
               >
                 <svg
-                  class="h-8"
+                  className="h-8"
                   viewBox="0 0 132 29"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -90,10 +90,10 @@ function HomePage() {
               </a>
               <a
                 href="#"
-                class="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400"
+                className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400"
               >
                 <svg
-                  class="h-11"
+                  className="h-11"
                   viewBox="0 0 208 42"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -114,10 +114,10 @@ function HomePage() {
               </a>
               <a
                 href="#"
-                class="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400"
+                className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400"
               >
                 <svg
-                  class="h-11"
+                  className="h-11"
                   viewBox="0 0 120 41"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"

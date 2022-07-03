@@ -84,11 +84,11 @@ function LoginPage(props) {
                   <button
                     disabled
                     type="button"
-                    class="py-2 px-4 mt-2 bg-gray-400 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
+                    className="py-2 px-4 mt-2 bg-gray-400 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
                   >
                     <svg
                       role="status"
-                      class="inline w-4 h-4 mr-3 text-white animate-spin"
+                      className="inline w-4 h-4 mr-3 text-white animate-spin"
                       viewBox="0 0 100 101"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -111,10 +111,10 @@ function LoginPage(props) {
           {showSuccessMessage && (
             <div className="flex items-center justify-center mt-6">
               <div
-                class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+                className="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
                 role="alert"
               >
-                <span class="font-medium">Password reset successful!</span>{" "}
+                <span className="font-medium">Password reset successful!</span>{" "}
                 Check your email and click on the link to create a new password.
               </div>
             </div>

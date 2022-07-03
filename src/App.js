@@ -16,9 +16,13 @@ import NavbarHome from "./components/NavbarHome"
 
 function App() {
   return (
-    <div className="App bg-gradient-to-b from-sky-100 to-sky-10">
+    <div className="App">
       <Routes>
-        <Route path="/" element={<NavbarHome />}>
+        <Route
+          path="/"
+          element={<NavbarHome />}
+          className="bg-gradient-to-b from-sky-100 to-sky-10"
+        >
           <Route path="" element={<HomePage />} />
           <Route path="signup" element={<SignupPage />} />
           <Route path="login" element={<LoginPage />} />
