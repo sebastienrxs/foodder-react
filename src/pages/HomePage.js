@@ -27,10 +27,7 @@ function HomePage() {
             Share the best things you ate. Discover your next favorite dish.
           </p>
           <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-            <Link
-              to="/signup"
-              className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
-            >
+            <Link to="/signup" className="btn-icon">
               Create an account
               <ChevronRightIcon className=" ml-4 w-5 h-5" />
             </Link>

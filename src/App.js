@@ -7,6 +7,7 @@ import SignupPage from "./pages/SignupPage"
 import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
 import FeedPage from "./pages/FeedPage"
+import ProfilePage from "./pages/ProfilePage"
 import ResetPasswordPage from "./pages/ResetPasswordPage"
 
 // Components
@@ -42,6 +43,14 @@ function App() {
             element={
               <IsPrivate>
                 <NewArticlePage />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path=":username"
+            element={
+              <IsPrivate>
+                <ProfilePage />
               </IsPrivate>
             }
           />

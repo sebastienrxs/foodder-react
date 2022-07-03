@@ -8,8 +8,10 @@ import ArticleCard from "../components/ArticleCard"
 console.log("API_URL:", API_URL)
 
 function FeedPage() {
-  const { user, isLoggedIn, isLoading } = useContext(AuthContext)
-
+  const { user, isLoggedIn } = useContext(AuthContext)
+  console.log("user:", user)
+  const { username } = user.payload
+  console.log("username:", username)
   const { userFavorites } = useContext(FavContext)
 
   const [articles, setArticles] = useState([])
