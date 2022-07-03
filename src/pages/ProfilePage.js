@@ -7,22 +7,22 @@ import { API_URL } from "../utils/constants"
 import { AuthContext } from "../context/auth.context"
 import { FavContext } from "../context/fav.context"
 
-//Components
-import ArticleCard from "../components/ArticleCard"
+// Components
 import ArticlePreview from "../components/ArticlePreview"
+import ProfileHeader from "../components/ProfileHeader"
+import ProfileTabs from "../components/ProfileTabs"
 
 function FeedPage() {
+  // hooks
   const { user, isLoggedIn } = useContext(AuthContext)
-  const { username } = useParams()
   const { userFavorites } = useContext(FavContext)
-
-  const [articles, setUserArticles] = useState([])
-  console.log("articles:", articles)
   const { getToken } = useContext(AuthContext)
+  const { username } = useParams()
+  const [articles, setUserArticles] = useState([])
 
+  // API call
   const getUserArticles = () => {
     const storedToken = getToken()
-    // console.log("storedToken:", storedToken)
 
     axios
       .get(`${API_URL}/articles/user/${username}`, {
@@ -38,9 +38,11 @@ function FeedPage() {
 
   return (
     <section className="FeedPage relative mt-24 w-max m-auto">
-      <div>{}</div>
+      <ProfileHeader />
+
+      <ProfileTabs />
+
       {articles.map((article) => {
-        console.log("article:", article)
         return <ArticlePreview key={article._id} {...article} />
       })}
     </section>
