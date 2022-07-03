@@ -3,11 +3,16 @@ import { Link } from "react-router-dom"
 
 const ArticlePreview = ({ image, _id }) => {
   return (
-    <div>
-      <Link to={"/articles/" + _id}>
-        <img className="w-24 h-24 m-5" src={image} alt="" />
-      </Link>
-    </div>
+    <></>
+    // <article className="">
+    //   <Link to={"/articles/" + _id}>
+    //     <img
+    //       className="rounded shadow-md object-cover aspect-square"
+    //       src={image}
+    //       alt=""
+    //     />
+    //   </Link>
+    // </article>
   )
 }
 

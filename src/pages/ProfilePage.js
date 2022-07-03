@@ -11,6 +11,7 @@ import { FavContext } from "../context/fav.context"
 import ArticlePreview from "../components/ArticlePreview"
 import ProfileHeader from "../components/ProfileHeader"
 import ProfileTabs from "../components/ProfileTabs"
+import ProfilePosts from "../components/ProfilePosts"
 
 function FeedPage() {
   // hooks
@@ -39,12 +40,8 @@ function FeedPage() {
   return (
     <section className="FeedPage relative mt-24 w-max m-auto">
       <ProfileHeader />
-
       <ProfileTabs />
-
-      {articles.map((article) => {
-        return <ArticlePreview key={article._id} {...article} />
-      })}
+      <ProfilePosts articles={articles} />
     </section>
   )
 }

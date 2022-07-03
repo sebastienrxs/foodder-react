@@ -5,7 +5,6 @@ import { Navigate } from "react-router-dom"
 import axios from "axios"
 import { API_URL } from "../utils/constants"
 import ArticleCard from "../components/ArticleCard"
-console.log("API_URL:", API_URL)
 
 function FeedPage() {
   const { user, isLoggedIn, isLoading } = useContext(AuthContext)

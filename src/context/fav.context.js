@@ -17,8 +17,6 @@ const FavContextWrapper = ({ children }) => {
   console.log("userFavorites:", userFavorites)
   const { getToken, user } = useContext(AuthContext)
 
-  console.log("user:", user)
-
   const getUserFavorites = useCallback(() => {
     const storedToken = getToken()
     if (user) {

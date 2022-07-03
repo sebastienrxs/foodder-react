@@ -12,7 +12,6 @@ import {
 
 function Navbar() {
   const { isLoggedIn, user, removeToken } = useContext(AuthContext)
-  console.log("user from navbar:", user)
   const username = "bobby"
   return (
     <>
@@ -34,7 +33,10 @@ function Navbar() {
             <li className="hover:bg-gray-100">
               <NavLink
                 to="/search"
-                className="h-16 px-6 flex justify-center items-center w-full"
+                className={({ isActive }) =>
+                  "h-16 px-6 flex justify-center items-center w-full" +
+                  (isActive ? " rounded bg-gray-200" : "")
+                }
               >
                 <SearchIcon className=" text-gray-800 w-5 h-5" />
               </NavLink>
@@ -43,7 +45,10 @@ function Navbar() {
             <li className="hover:bg-gray-100">
               <NavLink
                 to="/new-post"
-                className="h-16 px-6 flex justify-center items-center w-full"
+                className={({ isActive }) =>
+                  "h-16 px-6 flex justify-center items-center w-full" +
+                  (isActive ? " rounded bg-gray-200" : "")
+                }
               >
                 <PlusIcon className=" text-gray-800 w-5 h-5" />
               </NavLink>
@@ -52,7 +57,10 @@ function Navbar() {
             <li className="hover:bg-gray-100">
               <NavLink
                 to={username}
-                className="h-16 px-6 flex justify-center items-center w-full"
+                className={({ isActive }) =>
+                  "h-16 px-6 flex justify-center items-center w-full" +
+                  (isActive ? " rounded bg-gray-200" : "")
+                }
               >
                 <UserCircleIcon className=" text-gray-800 w-5 h-5" />
               </NavLink>

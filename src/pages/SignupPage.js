@@ -44,7 +44,6 @@ function SignupPage(props) {
       },
     })
       .then((response) => {
-        console.log("data:", response.data)
         setIsloading(false)
         navigate("/login")
       })

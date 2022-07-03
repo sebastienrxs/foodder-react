@@ -8,7 +8,6 @@ import { API_URL } from "../utils/constants"
 
 const ArticlesDetailsPage = () => {
   const [article, setArticle] = useState([])
-  console.log("article from setArticle:", article)
   const { articleId } = useParams()
   const [isLoading, setIsLoading] = useState(true)
 
@@ -36,8 +35,15 @@ const ArticlesDetailsPage = () => {
 
   console.log("articleId:", articleId)
 
+  // Wait for the article to be defined before returning the article
+  // if article is undefined: the component can't return undefined
   if (isLoading) return <p>Loading...</p>
-  return <ArticleCardSingle key={article._id} {...article} />
+
+  return (
+    <div className="m-auto w-max">
+      <ArticleCardSingle key={article._id} {...article} />
+    </div>
+  )
 }
 
 export default ArticlesDetailsPage
