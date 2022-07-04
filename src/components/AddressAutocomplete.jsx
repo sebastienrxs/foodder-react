@@ -11,9 +11,6 @@ function AddressAutocomplete() {
   const [address, setAddress] = useState("")
   const [data, setData] = useState({})
 
-  const { getToken } = useContext(AuthContext)
-  const storedToken = getToken()
-
   // States for the other inputs of the form
   const [formValues, setFormValues] = useState({
     title: "",
@@ -21,6 +18,12 @@ function AddressAutocomplete() {
     image: "",
     isPrivate: false,
   })
+
+  // States for displaying errors
+  const [errorMessage, setErrorMessage] = useState(undefined)
+
+  const { getToken } = useContext(AuthContext)
+  const storedToken = getToken()
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value)
@@ -47,30 +50,29 @@ function AddressAutocomplete() {
 
   // Send data to the backend with axios
   const handleSubmit = async (e) => {
-    try {
-      e.preventDefault()
-      const { country, cca2, city } = data
+    e.preventDefault()
+    const { country, cca2, city } = data
 
-      const fd = new FormData()
-      fd.append("title", formValues.title)
-      fd.append("description", formValues.description)
-      fd.append("image", formValues.image)
-      fd.append("private", formValues.isPrivate)
-      fd.append("country", country)
-      fd.append("cca2", cca2)
-      fd.append("city", city)
+    const fd = new FormData()
+    fd.append("title", formValues.title)
+    fd.append("description", formValues.description)
+    fd.append("image", formValues.image)
+    fd.append("private", formValues.isPrivate)
+    fd.append("country", country)
+    fd.append("cca2", cca2)
+    fd.append("city", city)
 
-      axios
-        .post(`${API_URL}/articles`, fd, {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        })
-        .then((response) => {
-          console.log("response.data:", response.data)
-        })
-        .catch((error) => console.log(error))
-    } catch (err) {
-      console.log(err)
-    }
+    axios
+      .post(`${API_URL}/articles`, fd, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        console.log("response.data:", response.data)
+      })
+      .catch((e) => {
+        console.log(e)
+        setErrorMessage(e.response.data.errorMessage)
+      })
   }
 
   // Gonstrain Google Maps API predictions to certain place types
@@ -88,6 +90,7 @@ function AddressAutocomplete() {
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <form onSubmit={handleSubmit}>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
             {/* Post Title */}
             <div className="form-input">
               <input

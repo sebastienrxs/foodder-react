@@ -48,10 +48,12 @@ function LoginPage(props) {
         setIsloading(false)
         navigate("/feed")
       })
+
       .catch((error) => {
         console.log(error)
         setErrorMessage(error.response.data.message)
         setIsloading(false)
+
       })
   }
 
