@@ -10,6 +10,7 @@ import FeedPage from "./pages/FeedPage"
 import ProfilePage from "./pages/ProfilePage"
 import ResetPasswordPage from "./pages/ResetPasswordPage"
 import ArticleDetailsPage from "./pages/ArticleDetailsPage"
+import SearchPage from "./pages/SearchPage"
 
 // Components
 import NavbarApp from "./components/NavbarApp"
@@ -60,6 +61,14 @@ function App() {
             element={
               <IsPrivate>
                 <ArticleDetailsPage />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="search"
+            element={
+              <IsPrivate>
+                <SearchPage />
               </IsPrivate>
             }
           />

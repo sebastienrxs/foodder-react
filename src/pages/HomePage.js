@@ -1,7 +1,6 @@
 import { useContext } from "react"
 import { AuthContext } from "../context/auth.context"
 import { Link, Navigate } from "react-router-dom"
-import AddressAutocomplete from "../components/AddressAutocomplete"
 import { ChevronRightIcon } from "@heroicons/react/outline"
 
 function HomePage() {
