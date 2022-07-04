@@ -40,13 +40,18 @@ function LoginPage(props) {
         username,
         password,
       },
-    }).then((response) => {
-      const { authToken } = response.data
-      // let the AuthContext have the authToken
-      storeToken(authToken)
-      setIsloading(false)
-      navigate("/feed")
     })
+      .then((response) => {
+        const { authToken } = response.data
+        // let the AuthContext have the authToken
+        storeToken(authToken)
+        setIsloading(false)
+        navigate("/feed")
+      })
+      .catch((e) => {
+        console.log(e)
+        setErrorMessage(e.response.data.message)
+      })
   }
 
   return (
