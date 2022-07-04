@@ -12,7 +12,7 @@ function FeedPage() {
   const { userFavorites } = useContext(FavContext)
 
   const [articles, setArticles] = useState([])
-  // console.log("articles:", articles)
+
   const { getToken } = useContext(AuthContext)
 
   const getAllArticles = () => {
@@ -23,7 +23,10 @@ function FeedPage() {
       .get(`${API_URL}/articles`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
-      .then((response) => setArticles(response.data))
+      .then((response) => {
+        setArticles(response.data)
+        console.log("response.data:", response.data)
+      })
       .catch((error) => console.log(error))
   }
 
