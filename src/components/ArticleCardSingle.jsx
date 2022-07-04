@@ -3,7 +3,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
 import ArticleInteraction from "./ArticleInteraction"
 
-function ArticleCard({ title, description, author, image, _id, city }) {
+function ArticleCardSingle({ title, description, author, image, _id, city }) {
   function handleFavorite() {
     //...
   }
@@ -33,4 +33,4 @@ function ArticleCard({ title, description, author, image, _id, city }) {
   )
 }
 
-export default ArticleCard
+export default ArticleCardSingle
