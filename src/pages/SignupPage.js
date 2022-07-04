@@ -48,8 +48,9 @@ function SignupPage(props) {
         navigate("/login")
       })
       .catch((error) => {
-        const errorDescription = error.response.data.message
-        setErrorMessage(errorDescription)
+        console.log(error)
+        setErrorMessage(error.response.data.errorMessage)
+        setIsloading(false)
       })
   }
 
@@ -166,16 +167,28 @@ function SignupPage(props) {
               </div>
             </form>
           </div>
-          <div className="flex items-center justify-center mt-6">
-            <Link
-              to="/login"
-              className="inline-flex items-center text-xs text-center text-gray-500 hover:text-gray-700 "
-            >
-              <span className="ml-2">
-                Already have an account?{"  "}
-                <span className="underline">Login!</span>
-              </span>
-            </Link>
+          <div className="items-center justify-center mt-6">
+            <div>
+              <Link
+                to="/login"
+                className="inline-flex items-center text-xs text-center text-gray-500 hover:text-gray-700 "
+              >
+                <span className="ml-2">
+                  Already have an account?{"  "}
+                  <span className="underline">Login!</span>
+                </span>
+              </Link>
+            </div>
+            {errorMessage && (
+              <div className="flex items-center justify-center mt-6">
+                <div
+                  className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                  role="alert"
+                >
+                  {errorMessage}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
