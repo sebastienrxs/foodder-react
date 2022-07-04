@@ -33,19 +33,24 @@ function LoginPage(props) {
       data: {
         email,
       },
-    }).then((response) => {
-      const { authToken } = response.data
-      // let the AuthContext have the authToken
-      storeToken(authToken)
-      setIsloading(false)
-      setSuccessMessage(true)
     })
+      .then((response) => {
+        const { authToken } = response.data
+        // let the AuthContext have the authToken
+        storeToken(authToken)
+        setIsloading(false)
+        setSuccessMessage(true)
+      })
+      .catch((error) => {
+        console.log(error)
+        setErrorMessage(error.response.data.errorMessage)
+        setIsloading(false)
+      })
   }
 
   return (
     <div className="LoginPage">
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <div className="flex mt-20">
+      <div className="flex pt-20">
         <div className="m-auto flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg drop-shadow-md border-t-4 border-blue-500">
           <div className="self-center mb-6 text-xl font-medium text-gray-600 sm:text-2xl ">
             <h1>Reset your password</h1>
@@ -59,7 +64,7 @@ function LoginPage(props) {
                     <UserIcon className="h-5 w-5 text-gray-500" />
                   </span>
                   <input
-                    type="text"
+                    type="email"
                     name="email"
                     value={email}
                     onChange={handleEmail}
@@ -108,6 +113,16 @@ function LoginPage(props) {
               </div>
             </form>
           </div>
+          {errorMessage && (
+            <div className="flex items-center justify-center mt-6">
+              <div
+                className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                role="alert"
+              >
+                {errorMessage}
+              </div>
+            </div>
+          )}
           {showSuccessMessage && (
             <div className="flex items-center justify-center mt-6">
               <div

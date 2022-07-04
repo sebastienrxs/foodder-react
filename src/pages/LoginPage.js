@@ -15,7 +15,6 @@ function LoginPage(props) {
   const [isLoading, setIsloading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(undefined)
   const { isLoggedIn } = useContext(AuthContext)
-
   const { storeToken } = useContext(AuthContext)
 
   const navigate = useNavigate()
@@ -24,6 +23,7 @@ function LoginPage(props) {
   const handleUsername = (e) => setUsername(e.target.value)
   const handlePassword = (e) => setPassword(e.target.value)
 
+  // Redirect to Feed if user is logged in
   if (isLoggedIn) {
     navigate("/feed")
   }
@@ -40,18 +40,23 @@ function LoginPage(props) {
         username,
         password,
       },
-    }).then((response) => {
-      const { authToken } = response.data
-      // let the AuthContext have the authToken
-      storeToken(authToken)
-      setIsloading(false)
-      navigate("/feed")
     })
+      .then((response) => {
+        const { authToken } = response.data
+        // let the AuthContext have the authToken
+        storeToken(authToken)
+        setIsloading(false)
+        navigate("/feed")
+      })
+      .catch((error) => {
+        console.log(error)
+        setErrorMessage(error.response.data.message)
+        setIsloading(false)
+      })
   }
 
   return (
     <div className="LoginPage pt-24">
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <div className="flex">
         <div className="m-auto flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg drop-shadow-md border-t-4 border-blue-500">
           <div className="self-center mb-6 text-xl font-medium text-gray-600 sm:text-2xl ">
@@ -116,7 +121,7 @@ function LoginPage(props) {
                   <button
                     disabled
                     type="button"
-                    className="py-2 px-4 mt-2 bg-gray-400 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
+                    className="py-2 px-4 bg-gray-400 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
                   >
                     <svg
                       role="status"
@@ -140,16 +145,28 @@ function LoginPage(props) {
               </div>
             </form>
           </div>
-          <div className="flex items-center justify-center mt-6">
-            <Link
-              to="/signup"
-              className="inline-flex items-center text-xs text-center text-gray-500 hover:text-gray-700 "
-            >
-              <span className="ml-2">
-                Don't have an account?{" "}
-                <span className="underline">Sign up!</span>
-              </span>
-            </Link>
+          <div className=" items-center justify-center mt-6">
+            <div>
+              <Link
+                to="/signup"
+                className="inline-flex items-center text-xs text-center text-gray-500 hover:text-gray-700 "
+              >
+                <span className="ml-2">
+                  Don't have an account?{" "}
+                  <span className="underline">Sign up!</span>
+                </span>
+              </Link>
+            </div>
+            {errorMessage && (
+              <div className="flex items-center justify-center mt-6">
+                <div
+                  className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                  role="alert"
+                >
+                  {errorMessage}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

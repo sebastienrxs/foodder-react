@@ -1,18 +1,19 @@
 import { useCallback, useContext, useEffect, useState } from "react"
-import { AuthContext } from "../context/auth.context"
-import { FavContext } from "../context/fav.context"
 import { Navigate } from "react-router-dom"
 import axios from "axios"
 import { API_URL } from "../utils/constants"
+
+// Context
+import { AuthContext } from "../context/auth.context"
+import { FavContext } from "../context/fav.context"
+
+// Components
 import ArticleCard from "../components/ArticleCard"
 
 function FeedPage() {
   const { user, isLoggedIn, isLoading } = useContext(AuthContext)
-
   const { userFavorites } = useContext(FavContext)
-
   const [articles, setArticles] = useState([])
-
   const { getToken } = useContext(AuthContext)
 
   const getAllArticles = () => {
