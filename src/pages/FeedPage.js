@@ -1,5 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react"
-import { Navigate } from "react-router-dom"
+import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { API_URL } from "../utils/constants"
 
@@ -11,16 +10,18 @@ import { FavContext } from "../context/fav.context"
 import ArticleCard from "../components/ArticleCard"
 
 function FeedPage() {
+  // Contexts
   const { user, isLoggedIn, isLoading } = useContext(AuthContext)
   const { userFavorites } = useContext(FavContext)
-  const [articles, setArticles] = useState([])
-  const [articleWithFavorites, setFavorites] = useState([])
-  // console.log("articles:", articles)
   const { getToken } = useContext(AuthContext)
 
+  // States
+  const [articles, setArticles] = useState([])
+  const [articleWithFavorites, setFavorites] = useState([])
+
+  // Get articles and set them
   const getAllArticles = () => {
     const storedToken = getToken()
-    // console.log("storedToken:", storedToken)
 
     axios
       .get(`${API_URL}/articles`, {
@@ -28,22 +29,21 @@ function FeedPage() {
       })
       .then((response) => {
         setArticles(response.data)
-        // console.log("response.data:", response.data)
       })
       .catch((error) => console.log(error))
   }
+
+  // Set articles with key "isFav"
   const checkIsFav = () => {
     const favoritesId = userFavorites
       .map((x) => {
         return x?.article?._id
       })
       .filter(Boolean)
-    // console.log("FAVORITES ID", favoritesId)
     const loadedFavs = articles.map((element) => {
       element.isFav = favoritesId.includes(element._id)
       return element
     })
-    console.log("------------------------------->>>>>>", loadedFavs)
     setFavorites(loadedFavs)
   }
 

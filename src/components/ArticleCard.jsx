@@ -1,20 +1,16 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faHeart } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
 import ArticleInteraction from "./ArticleInteraction"
 
 function ArticleCard({ title, description, author, image, _id, city, isFav }) {
-  function handleFavorite() {
-    //...
-  }
-  // console.log
   return (
     <article className="ArticleCard">
       <div className="author-info">
         <div className="author-img">
           <img src={author.image} alt="" />
         </div>
-        <div className="author-name">{author.username}</div>
+        <div className="author-name">
+          <Link to={`/${author.username}`}>{author.username}</Link>
+        </div>
       </div>
       <picture className="article-img">
         <img src={image} alt="" />
