@@ -1,23 +1,34 @@
-import logo from "./logo.svg"
 import "./App.css"
+import { Routes, Route } from "react-router-dom"
+
+// Pages
+import NewArticlePage from "./pages/NewArticlePage"
 import SignupPage from "./pages/SignupPage"
 import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
 import FeedPage from "./pages/FeedPage"
-import { Routes, Route } from "react-router-dom"
-import Navbar from "./components/Navbar"
+import ProfilePage from "./pages/ProfilePage"
+import ResetPasswordPage from "./pages/ResetPasswordPage"
+import ArticleDetailsPage from "./pages/ArticleDetailsPage"
+
+// Components
 import NavbarApp from "./components/NavbarApp"
-import NewArticlePage from "./pages/NewArticlePage"
 import IsPrivate from "./components/IsPrivate"
+import NavbarHome from "./components/NavbarHome"
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Navbar />}>
+        <Route
+          path="/"
+          element={<NavbarHome />}
+          className="bg-gradient-to-b from-sky-100 to-sky-10"
+        >
           <Route path="" element={<HomePage />} />
           <Route path="signup" element={<SignupPage />} />
           <Route path="login" element={<LoginPage />} />
+          <Route path="reset-password" element={<ResetPasswordPage />} />
         </Route>
         <Route path="/" element={<NavbarApp />}>
           <Route
@@ -33,6 +44,22 @@ function App() {
             element={
               <IsPrivate>
                 <NewArticlePage />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path=":username"
+            element={
+              <IsPrivate>
+                <ProfilePage />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="articles/:articleId"
+            element={
+              <IsPrivate>
+                <ArticleDetailsPage />
               </IsPrivate>
             }
           />
