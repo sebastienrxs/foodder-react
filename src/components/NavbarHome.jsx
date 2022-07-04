@@ -5,14 +5,14 @@ function NavbarHome() {
   return (
     <>
       <Navbar fluid={true} rounded={true}>
-        <Navbar.Brand>
-          <Link to="/" className="flex">
-            <img src={logo} className="mr-3 h-6 sm:h-9" alt="Foodder Logo" />
-            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-              Foodder
-            </span>
-          </Link>
-        </Navbar.Brand>
+        {/* <Navbar.Brand> */}
+        <Link to="/" className="flex">
+          <img src={logo} className="mr-3 h-6 sm:h-9" alt="Foodder Logo" />
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+            Foodder
+          </span>
+        </Link>
+        {/* </Navbar.Brand> */}
         <div className="flex md:order-2">
           <Link to="/signup" className="btn-nav-outline">
             Sign-up

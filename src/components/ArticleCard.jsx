@@ -3,10 +3,11 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
 import ArticleInteraction from "./ArticleInteraction"
 
-function ArticleCard({ title, description, author, image, _id, city }) {
+function ArticleCard({ title, description, author, image, _id, city, isFav }) {
   function handleFavorite() {
     //...
   }
+  // console.log
   return (
     <article className="ArticleCard">
       <div className="author-info">
@@ -19,7 +20,7 @@ function ArticleCard({ title, description, author, image, _id, city }) {
         <img src={image} alt="" />
       </picture>
       <div className="article-interactions">
-        <ArticleInteraction _id={_id} />
+        <ArticleInteraction _id={_id} isFav={isFav} />
         <div className="article-location">
           {city.cityName}, {city.country.countryName}
         </div>

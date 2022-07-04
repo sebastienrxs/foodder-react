@@ -14,6 +14,8 @@ function FeedPage() {
   const { user, isLoggedIn, isLoading } = useContext(AuthContext)
   const { userFavorites } = useContext(FavContext)
   const [articles, setArticles] = useState([])
+  const [articleWithFavorites, setFavorites] = useState([])
+  // console.log("articles:", articles)
   const { getToken } = useContext(AuthContext)
 
   const getAllArticles = () => {
@@ -26,22 +28,47 @@ function FeedPage() {
       })
       .then((response) => {
         setArticles(response.data)
-        console.log("response.data:", response.data)
+        // console.log("response.data:", response.data)
       })
       .catch((error) => console.log(error))
+  }
+  const checkIsFav = () => {
+    const favoritesId = userFavorites
+      .map((x) => {
+        return x?.article?._id
+      })
+      .filter(Boolean)
+    // console.log("FAVORITES ID", favoritesId)
+    const loadedFavs = articles.map((element) => {
+      element.isFav = favoritesId.includes(element._id)
+      return element
+    })
+    console.log("------------------------------->>>>>>", loadedFavs)
+    setFavorites(loadedFavs)
   }
 
   useEffect(() => {
     getAllArticles()
   }, [])
 
+  useEffect(() => {
+    checkIsFav()
+  }, [articles])
+
   return (
-    <section className="FeedPage relative mt-24 w-max m-auto">
-      {articles.map((article) => {
-        // console.log("article:", article)
-        return <ArticleCard key={article._id} {...article} />
-      })}
-    </section>
+    <>
+      {articles.length === 0 ? (
+        <div>Loading</div>
+      ) : (
+        <section className="FeedPage relative mt-24 w-max m-auto">
+          {articleWithFavorites.map((article) => {
+            console.log("article:", article)
+            // if (!article.article) return
+            return <ArticleCard key={article._id} {...article} />
+          })}
+        </section>
+      )}
+    </>
   )
 }
 

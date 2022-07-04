@@ -33,7 +33,7 @@ const ArticlesDetailsPage = () => {
     getOneArticle()
   }, [])
 
-  console.log("articleId:", articleId)
+  // console.log("articleId:", articleId)
 
   // Wait for the article to be defined before returning the article
   // if article is undefined: the component can't return undefined
