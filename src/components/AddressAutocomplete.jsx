@@ -10,10 +10,6 @@ function AddressAutocomplete() {
   // States for Google API's input -> Search for city
   const [address, setAddress] = useState("")
   const [data, setData] = useState({})
-  const [country, setCountry] = useState("")
-  const [city, setCity] = useState("")
-  const [cca2, setCca2] = useState("")
-  console.log("data:", data)
 
   const { getToken } = useContext(AuthContext)
   const storedToken = getToken()
