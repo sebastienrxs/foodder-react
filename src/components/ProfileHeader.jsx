@@ -1,6 +1,7 @@
 import userEvent from "@testing-library/user-event"
 import React, { useContext } from "react"
 import { AuthContext } from "../context/auth.context"
+import profilePlaceholder from "../assets/profile-placeholder.jpg"
 
 const ProfileHeader = () => {
   const { user } = useContext(AuthContext)
@@ -11,7 +12,7 @@ const ProfileHeader = () => {
         <div class="flex flex-col items-center pb-10">
           <img
             class="mb-3 w-24 h-24 border-solid border-blue-600 border-2 rounded-full shadow-lg"
-            src={user.payload.image}
+            src={user.payload.image ? user.payload.image : profilePlaceholder}
             alt="user"
           />
           <h5 class="mb-1 text-xl font-medium text-gray-900 ">
