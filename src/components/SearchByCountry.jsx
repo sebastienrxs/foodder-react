@@ -1,7 +1,10 @@
 import React, { useState, useContext, useEffect } from "react"
+import { Multiselect } from "multiselect-react-dropdown"
 import axios from "axios"
 import { API_URL } from "../utils/constants"
 import { AuthContext } from "../context/auth.context"
+
+import "../components/SearchByCountry.css"
 
 const SearchByCountry = () => {
   const [countriesList, setCountriesList] = useState([])
@@ -29,18 +32,26 @@ const SearchByCountry = () => {
       })
   }, [])
 
+  // const handleSubmit =  () => {
+  //   // Filter content
+  // } -> In the Page and not in the component.
+
   return (
     <>
       <div className="countries-list">
-        {countriesList.map((country, index) => {
-          return (
-            <div key={index}>
-              <input value={country} type="checkbox" />
-              <span>{country}</span>
-            </div>
-          )
-        })}
+        <Multiselect
+          className="select"
+          isObject={false}
+          options={countriesList}
+          onSelect={(e) => {
+            console.log(e)
+          }}
+          onRemove={(e) => {
+            console.log(e)
+          }}
+        />
       </div>
+      {/* <button onClick={handleSubmit}>Filter by countries</button> */}
     </>
   )
 }
