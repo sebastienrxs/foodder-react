@@ -4,12 +4,14 @@ import axios from "axios"
 import { API_URL } from "../utils/constants"
 import { AuthContext } from "../context/auth.context"
 
-import "../components/SearchByCountry.css"
+import "../components/SearchCountryBar.css"
 
-const SearchByCountry = () => {
-  const [countriesList, setCountriesList] = useState([])
-  console.log("countriesList:", countriesList)
-
+const SearchCountryBar = ({
+  countriesList,
+  setCountriesList,
+  selectedCountries,
+  setSelectedCountries,
+}) => {
   const { getToken } = useContext(AuthContext)
   const storedToken = getToken()
 
@@ -20,7 +22,6 @@ const SearchByCountry = () => {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        console.log("response.data:", response.data)
         setCountriesList(
           response.data.map((el) => {
             return el._id
@@ -32,10 +33,6 @@ const SearchByCountry = () => {
       })
   }, [])
 
-  // const handleSubmit =  () => {
-  //   // Filter content
-  // } -> In the Page and not in the component.
-
   return (
     <>
       <div className="countries-list">
@@ -43,17 +40,16 @@ const SearchByCountry = () => {
           className="select"
           isObject={false}
           options={countriesList}
-          onSelect={(e) => {
-            console.log(e)
+          selectedValues={selectedCountries}
+          onSelect={(values) => {
+            console.log("e:", values)
+            setSelectedCountries([...values])
           }}
-          onRemove={(e) => {
-            console.log(e)
-          }}
+          onRemove={setSelectedCountries}
         />
       </div>
-      {/* <button onClick={handleSubmit}>Filter by countries</button> */}
     </>
   )
 }
 
-export default SearchByCountry
+export default SearchCountryBar
