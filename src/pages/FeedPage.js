@@ -38,10 +38,8 @@ function FeedPage() {
       .catch((error) => console.log(error))
   }, [searchParams, getToken])
 
-
   // Set articles with key "isFav"
   const checkIsFav = useCallback(() => {
-
     const favoritesId = userFavorites
       .map((x) => {
         return x?.article?._id
@@ -69,8 +67,14 @@ function FeedPage() {
       ) : (
         <section className="FeedPage relative mt-24 w-max m-auto">
           {articleWithFavorites.map((article) => {
-            console.log("article:", article)
-            return <ArticleCard key={article._id} {...article} />
+            return (
+              <ArticleCard
+                key={article._id}
+                {...article}
+                getAllArticles={getAllArticles}
+                setFavorites={setFavorites}
+              />
+            )
           })}
         </section>
       )}
