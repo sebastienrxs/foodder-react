@@ -15,10 +15,14 @@ import { BookmarkIcon as BookmarkIconSolid } from "@heroicons/react/solid"
 
 // Component
 const ArticleInteraction = ({ _id, isFav }) => {
+  console.log("isFav:", isFav)
+  console.log("_id:", _id)
   const { getToken } = useContext(AuthContext)
   const storedToken = getToken()
   console.log("storedToken:", storedToken)
-  // const [isFavorite, setIsFavorite] = useState()
+
+  const [isFavState, setIsFavState] = useState(isFav)
+  console.log(">>>>>>>>>> isFavorite:", isFavState)
 
   function handleCreateFav(e) {
     e.preventDefault()
@@ -34,8 +38,7 @@ const ArticleInteraction = ({ _id, isFav }) => {
       .then((response) => {
         console.log("response.data:", response.data)
 
-        // set isFav key as true
-        isFav = true
+        setIsFavState(true)
       })
       .catch((e) => {
         console.log(e)
@@ -54,8 +57,7 @@ const ArticleInteraction = ({ _id, isFav }) => {
       .then((response) => {
         console.log("response.data:", response.data)
 
-        // set isFav key as true
-        isFav = false
+        setIsFavState(false)
       })
       .catch((e) => {
         console.log(e)
@@ -67,7 +69,7 @@ const ArticleInteraction = ({ _id, isFav }) => {
       <FontAwesomeIcon icon={faHeart} className="icon" />
       <FontAwesomeIcon icon={faComment} className="icon" />
 
-      {isFav ? (
+      {isFavState ? (
         <button onClick={handleDeleteFav}>
           <BookmarkIconSolid className="h-5 w-5 mx-3 inline text-green-500" />
         </button>
