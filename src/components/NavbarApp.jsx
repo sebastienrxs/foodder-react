@@ -9,6 +9,7 @@ import {
   PlusIcon,
   UserCircleIcon,
 } from "@heroicons/react/outline"
+import SearchPage from "../pages/SearchPage"
 
 function Navbar() {
   const { isLoggedIn, user, removeToken } = useContext(AuthContext)
@@ -70,6 +71,7 @@ function Navbar() {
       </nav>
 
       <main className="pt-24">
+        <SearchPage />
         <Outlet />
       </main>
     </>

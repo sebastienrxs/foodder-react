@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { API_URL } from "../utils/constants"
 
@@ -8,6 +8,7 @@ import { FavContext } from "../context/fav.context"
 
 // Components
 import ArticleCard from "../components/ArticleCard"
+import { useSearchParams } from "react-router-dom"
 
 function FeedPage() {
   // Contexts
@@ -16,26 +17,31 @@ function FeedPage() {
   const { getToken } = useContext(AuthContext)
 
   // States
+  const [searchParams, setSearchParams] = useSearchParams()
   const [articles, setArticles] = useState([])
   // all articles, with added key "isFav"
   const [articleWithFavorites, setFavorites] = useState([])
 
   // Get articles and set them
-  const getAllArticles = () => {
+  const getAllArticles = useCallback(() => {
     const storedToken = getToken()
 
     axios
-      .get(`${API_URL}/articles`, {
+      .get(`/articles`, {
+        params: searchParams,
+        baseURL: API_URL,
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
         setArticles(response.data)
       })
       .catch((error) => console.log(error))
-  }
+  }, [searchParams, getToken])
 
-  // Set articles with new key "isFav"
-  const checkIsFav = () => {
+
+  // Set articles with key "isFav"
+  const checkIsFav = useCallback(() => {
+
     const favoritesId = userFavorites
       .map((x) => {
         return x?.article?._id
@@ -46,15 +52,15 @@ function FeedPage() {
       return element
     })
     setFavorites(loadedFavs)
-  }
+  }, [articles, userFavorites])
 
   useEffect(() => {
     getAllArticles()
-  }, [])
+  }, [getAllArticles])
 
   useEffect(() => {
     checkIsFav()
-  }, [articles])
+  }, [checkIsFav])
 
   return (
     <>
