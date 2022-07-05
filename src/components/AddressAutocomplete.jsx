@@ -75,7 +75,7 @@ function AddressAutocomplete() {
       })
   }
 
-  // Gonstrain Google Maps API predictions to certain place types
+  // Constrain Google Maps API predictions to certain place types
   const searchOptions = {
     types: ["locality", "sublocality", "administrative_area_level_3"],
   }
