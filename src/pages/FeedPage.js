@@ -19,6 +19,7 @@ function FeedPage() {
   // States
   const [searchParams, setSearchParams] = useSearchParams()
   const [articles, setArticles] = useState([])
+  // all articles, with added key "isFav"
   const [articleWithFavorites, setFavorites] = useState([])
 
   // Get articles and set them
@@ -37,8 +38,10 @@ function FeedPage() {
       .catch((error) => console.log(error))
   }, [searchParams, getToken])
 
+
   // Set articles with key "isFav"
   const checkIsFav = useCallback(() => {
+
     const favoritesId = userFavorites
       .map((x) => {
         return x?.article?._id
@@ -67,7 +70,6 @@ function FeedPage() {
         <section className="FeedPage relative mt-24 w-max m-auto">
           {articleWithFavorites.map((article) => {
             console.log("article:", article)
-            // if (!article.article) return
             return <ArticleCard key={article._id} {...article} />
           })}
         </section>
