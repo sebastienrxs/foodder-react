@@ -7,9 +7,9 @@ import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../context/auth.context"
 
 // Icons
+// import { faStar } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart, faComment } from "@fortawesome/free-solid-svg-icons"
-// import { faStar } from "@fortawesome/free-regular-svg-icons"
 import { BookmarkIcon } from "@heroicons/react/outline"
 import { BookmarkIcon as BookmarkIconSolid } from "@heroicons/react/solid"
 
@@ -21,8 +21,8 @@ const ArticleInteraction = ({ _id, isFav }) => {
   const storedToken = getToken()
   console.log("storedToken:", storedToken)
 
-  const [isFavState, setIsFavState] = useState(isFav)
-  console.log(">>>>>>>>>> isFavorite:", isFavState)
+  // const [isFavState, setIsFavState] = useState(isFav)
+  // console.log(">>>>>>>>>> isFavorite:", isFavState)
 
   function handleCreateFav(e) {
     e.preventDefault()
@@ -38,7 +38,7 @@ const ArticleInteraction = ({ _id, isFav }) => {
       .then((response) => {
         console.log("response.data:", response.data)
 
-        setIsFavState(true)
+        // setIsFavState(true)
       })
       .catch((e) => {
         console.log(e)
@@ -57,7 +57,7 @@ const ArticleInteraction = ({ _id, isFav }) => {
       .then((response) => {
         console.log("response.data:", response.data)
 
-        setIsFavState(false)
+        // setIsFavState(false)
       })
       .catch((e) => {
         console.log(e)
@@ -69,7 +69,7 @@ const ArticleInteraction = ({ _id, isFav }) => {
       <FontAwesomeIcon icon={faHeart} className="icon" />
       <FontAwesomeIcon icon={faComment} className="icon" />
 
-      {isFavState ? (
+      {isFav ? (
         <button onClick={handleDeleteFav}>
           <BookmarkIconSolid className="h-5 w-5 mx-3 inline text-green-500" />
         </button>
