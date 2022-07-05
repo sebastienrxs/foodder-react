@@ -41,9 +41,27 @@ const ArticleInteraction = ({ _id, isFav }) => {
         console.log(e)
       })
   }
-  function handleDeleteFav() {
-    //...
+
+  function handleDeleteFav(e) {
+    e.preventDefault()
+
+    axios
+      .delete(
+        `${API_URL}/favorites/${_id}`,
+
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
+      .then((response) => {
+        console.log("response.data:", response.data)
+
+        // set isFav key as true
+        isFav = false
+      })
+      .catch((e) => {
+        console.log(e)
+      })
   }
+
   return (
     <div className="article-commands">
       <FontAwesomeIcon icon={faHeart} className="icon" />
