@@ -3,8 +3,6 @@ import axios from "axios"
 import { AuthContext } from "../context/auth.context"
 import { Link, Navigate, useSearchParams } from "react-router-dom"
 import SearchCountryBar from "../components/SearchCountryBar"
-import { API_URL } from "../utils/constants"
-import ArticleCard from "../components/ArticleCard"
 
 function SearchPage() {
   const { getToken } = useContext(AuthContext)
