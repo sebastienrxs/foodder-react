@@ -1,6 +1,10 @@
+import axios from "axios"
+import { API_URL } from "../utils/constants"
+
 //Context
 import { FavContext } from "../context/fav.context"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
+import { AuthContext } from "../context/auth.context"
 
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -11,10 +15,33 @@ import { BookmarkIcon as BookmarkIconSolid } from "@heroicons/react/solid"
 
 // Component
 const ArticleInteraction = ({ _id, isFav }) => {
-  function createFav() {
-    //...
+  const { getToken } = useContext(AuthContext)
+  const storedToken = getToken()
+  console.log("storedToken:", storedToken)
+  // const [isFavorite, setIsFavorite] = useState()
+
+  function handleCreateFav(e) {
+    e.preventDefault()
+
+    axios
+      .post(
+        `${API_URL}/favorites`,
+        {
+          article: _id,
+        },
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
+      .then((response) => {
+        console.log("response.data:", response.data)
+
+        // set isFav key as true
+        isFav = true
+      })
+      .catch((e) => {
+        console.log(e)
+      })
   }
-  function deleteFav() {
+  function handleDeleteFav() {
     //...
   }
   return (
@@ -23,11 +50,11 @@ const ArticleInteraction = ({ _id, isFav }) => {
       <FontAwesomeIcon icon={faComment} className="icon" />
 
       {isFav ? (
-        <button onClick={deleteFav}>
+        <button onClick={handleDeleteFav}>
           <BookmarkIconSolid className="h-5 w-5 mx-3 inline text-green-500" />
         </button>
       ) : (
-        <button onClick={createFav}>
+        <button onClick={handleCreateFav}>
           <BookmarkIcon className="h-5 w-5 inline mx-3 text-gray-500" />
         </button>
       )}
