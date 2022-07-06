@@ -12,7 +12,6 @@ function ArticleCard({
   getAllArticles,
   setFavorites,
 }) {
-  console.log("------ ARTICLE TITLE ---------:", title)
   return (
     <article className="ArticleCard">
       <div className="author-info">

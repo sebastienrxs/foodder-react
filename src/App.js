@@ -49,7 +49,15 @@ function App() {
             }
           />
           <Route
-            path=":username"
+            path=":username/posts"
+            element={
+              <IsPrivate>
+                <ProfilePage />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path=":username/map"
             element={
               <IsPrivate>
                 <ProfilePage />
