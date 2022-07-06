@@ -15,8 +15,8 @@ import { BookmarkIcon as BookmarkIconSolid } from "@heroicons/react/solid"
 
 // Component
 const ArticleInteraction = ({ _id, isFav, getAllArticles, setFavorites }) => {
-  console.log("isFav:", isFav)
-  console.log("_id:", _id)
+  // console.log("isFav:", isFav)
+  // console.log("_id:", _id)
   const { getToken } = useContext(AuthContext)
   const storedToken = getToken()
   const { getUserFavorites } = useContext(FavContext)

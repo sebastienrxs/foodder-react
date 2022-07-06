@@ -13,29 +13,28 @@ const SearchCountryBar = ({
   setSelectedCountries,
 }) => {
   const { getToken } = useContext(AuthContext)
-  const storedToken = getToken()
-  const options = [
-    { value: "IT", label: "Italy" },
-    { value: "FR", label: "France" },
-  ]
+
+  console.log("countriesList:", countriesList)
 
   // GET THE LIST OF COUNTRIES WHICH THE USER CAN FILTER ON
-  // useEffect(() => {
-  //   axios
-  //     .get(`${API_URL}/articles/countries`, {
-  //       headers: { Authorization: `Bearer ${storedToken}` },
-  //     })
-  //     .then((response) => {
-  //       setCountriesList(
-  //         response.data.map((el) => {
-  //           return el._id
-  //         })
-  //       )
-  //     })
-  //     .catch((e) => {
-  //       console.log(e)
-  //     })
-  // }, [])
+  useEffect(() => {
+    const storedToken = getToken()
+    axios
+      .get(`${API_URL}/articles/countries`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        console.log("response:", response)
+        setCountriesList(
+          response.data.map((el) => {
+            return { value: el.cca2, label: el._id }
+          })
+        )
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }, [getToken, setCountriesList])
 
   const updateValues = (values) => {
     console.log(
@@ -51,10 +50,13 @@ const SearchCountryBar = ({
         <Multiselect
           className="select"
           isObject={true}
-          options={options}
+          options={countriesList}
           displayValue="label"
-          selectedValues={options.filter((x) =>
-            selectedCountries?.includes(x.value)
+
+
+          selectedValues={countriesList.filter((x) =>
+            selectedCountries.includes(x.value)
+
           )}
           onSelect={updateValues}
           onRemove={updateValues}
