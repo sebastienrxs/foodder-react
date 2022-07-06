@@ -49,7 +49,7 @@ function ArticleCard({
             getAllArticles={getAllArticles}
             setFavorites={setFavorites}
           />
-          <Link to={`?countries=${city.country.countryCca2}`}>
+          <Link to={`/feed/?countries=${city.country.countryCca2}`}>
             <div className=" inline-block bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-1 mt-1 rounded">
               <LocationMarkerIcon className="mr-1 -mt-1 w-4 h-4 inline-block" />
               {city.country.countryName}

@@ -12,18 +12,18 @@ const ProfilePosts = ({ articles }) => {
         console.log("article:", article)
         return (
           <Link to={`/articles/${article._id}`} key={article.title}>
-            <article className=" text-left mb-12 bg-white rounded-lg border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+            <article className=" text-left mb-14 bg-white rounded-lg">
               <img
                 className="rounded-lg object-cover w-96 h-52"
                 src={article.image}
                 alt=""
               />
-              <span className=" inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 mt-2 rounded ">
+              <span className=" inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 pr-2.5 pl-1 py-1 mt-4 rounded ">
                 <LocationMarkerIcon className="mr-1 -mt-1 w-4 h-4 inline-block" />
                 {article?.city.country.countryName}
               </span>
               {article.private && (
-                <span className=" inline-block bg-rose-100 text-rose-800 text-xs font-semibold mr-2 px-2.5 py-0.5 mt-2 rounded ">
+                <span className=" inline-block bg-rose-100 text-rose-800 text-xs font-semibold mr-2 pr-2.5 pl-1 py-1 mt-2 rounded ">
                   <LockClosedIcon className="mr-1 -mt-1 w-4 h-4 inline-block" />
                   Private
                 </span>
