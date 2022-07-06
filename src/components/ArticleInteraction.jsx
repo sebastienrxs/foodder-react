@@ -14,12 +14,12 @@ import { BookmarkIcon } from "@heroicons/react/outline"
 import { BookmarkIcon as BookmarkIconSolid } from "@heroicons/react/solid"
 
 // Component
-const ArticleInteraction = ({ _id, isFav }) => {
+const ArticleInteraction = ({ _id, isFav, getAllArticles, setFavorites }) => {
   console.log("isFav:", isFav)
   console.log("_id:", _id)
   const { getToken } = useContext(AuthContext)
   const storedToken = getToken()
-  console.log("storedToken:", storedToken)
+  const { getUserFavorites } = useContext(FavContext)
 
   // const [isFavState, setIsFavState] = useState(isFav)
   // console.log(">>>>>>>>>> isFavorite:", isFavState)
@@ -38,6 +38,8 @@ const ArticleInteraction = ({ _id, isFav }) => {
       .then((response) => {
         console.log("response.data:", response.data)
 
+        getAllArticles()
+        getUserFavorites()
         // setIsFavState(true)
       })
       .catch((e) => {
@@ -56,7 +58,8 @@ const ArticleInteraction = ({ _id, isFav }) => {
       )
       .then((response) => {
         console.log("response.data:", response.data)
-
+        getAllArticles()
+        getUserFavorites()
         // setIsFavState(false)
       })
       .catch((e) => {
