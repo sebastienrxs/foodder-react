@@ -54,7 +54,7 @@ const SearchCountryBar = ({
           options={options}
           displayValue="label"
           selectedValues={options.filter((x) =>
-            selectedCountries.includes(x.value)
+            selectedCountries?.includes(x.value)
           )}
           onSelect={updateValues}
           onRemove={updateValues}
