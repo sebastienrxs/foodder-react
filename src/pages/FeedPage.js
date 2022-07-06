@@ -12,23 +12,25 @@ import { useSearchParams } from "react-router-dom"
 
 function FeedPage() {
   // Contexts
-  const { user, isLoggedIn, isLoading } = useContext(AuthContext)
   const { userFavorites } = useContext(FavContext)
   const { getToken } = useContext(AuthContext)
 
   // States
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
   const [articles, setArticles] = useState([])
-  // all articles, with added key "isFav"
   const [articleWithFavorites, setFavorites] = useState([])
 
   // Get articles and set them
   const getAllArticles = useCallback(() => {
     const storedToken = getToken()
 
+    const params = Object.fromEntries(searchParams.entries())
+
+    console.log("running getAllArticles", { params })
+
     axios
       .get(`/articles`, {
-        params: searchParams,
+        params,
         baseURL: API_URL,
         headers: { Authorization: `Bearer ${storedToken}` },
       })
@@ -36,6 +38,8 @@ function FeedPage() {
         setArticles(response.data)
       })
       .catch((error) => console.log(error))
+
+    console.log("—————— DID AN AXIOS ————————————")
   }, [searchParams, getToken])
 
   // Set articles with key "isFav"
