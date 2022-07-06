@@ -9,6 +9,7 @@ import { FavContext } from "../context/fav.context"
 // Components
 import ArticleCard from "../components/ArticleCard"
 import { useParams, useSearchParams } from "react-router-dom"
+import SkeletonArticleFeed from "../components/SkeletonArticleFeed"
 
 function ArticlesDetailsPage() {
   // Contexts
@@ -65,7 +66,7 @@ function ArticlesDetailsPage() {
   return (
     <>
       {articles.length === 0 ? (
-        <div>Loading</div>
+        <SkeletonArticleFeed />
       ) : (
         <section className="FeedPage relative mt-24 w-max m-auto">
           {articleWithFavorites.map((article) => {
