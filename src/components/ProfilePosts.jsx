@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { LocationMarkerIcon } from "@heroicons/react/outline"
+import { LockClosedIcon } from "@heroicons/react/outline"
 
 const ProfilePosts = ({ articles }) => {
   return !articles ? (
@@ -17,10 +18,16 @@ const ProfilePosts = ({ articles }) => {
                 src={article.image}
                 alt=""
               />
-              <span className=" inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 mt-2 rounded dark:bg-blue-200 dark:text-blue-800">
+              <span className=" inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 mt-2 rounded ">
                 <LocationMarkerIcon className="mr-1 -mt-1 w-4 h-4 inline-block" />
                 {article?.city.country.countryName}
               </span>
+              {article.private && (
+                <span className=" inline-block bg-rose-100 text-rose-800 text-xs font-semibold mr-2 px-2.5 py-0.5 mt-2 rounded ">
+                  <LockClosedIcon className="mr-1 -mt-1 w-4 h-4 inline-block" />
+                  Private
+                </span>
+              )}
 
               <h5 className="mt-3 text-l truncate font-bold tracking-tight text-gray-900 dark:text-white">
                 {article.title}
