@@ -12,13 +12,14 @@ import ProfileHeader from "../components/ProfileHeader"
 import ProfileTabs from "../components/ProfileTabs"
 import ProfilePosts from "../components/ProfilePosts"
 
-function FeedPage() {
+function ProfilePage() {
   // hooks
   const { user, isLoggedIn } = useContext(AuthContext)
   const { userFavorites } = useContext(FavContext)
   const { getToken } = useContext(AuthContext)
   const { username } = useParams()
   const [articles, setUserArticles] = useState([])
+  console.log("USER ARTICLES ___________________:", articles)
   const [userProfile, setUserProfile] = useState({})
   const [numberOfArticles, setNumberOfArticles] = useState(0)
 
@@ -67,7 +68,7 @@ function FeedPage() {
   return isUserProfileLoading ? (
     <p>loading</p>
   ) : (
-    <section className="FeedPage relative mt-24 w-max m-auto">
+    <section className="ProfilePage relative mt-24 w-max m-auto">
       <ProfileHeader {...userProfile} numberOfArticles={numberOfArticles} />
       <ProfileTabs />
       <ProfilePosts articles={articles} />
@@ -75,4 +76,4 @@ function FeedPage() {
   )
 }
 
-export default FeedPage
+export default ProfilePage
