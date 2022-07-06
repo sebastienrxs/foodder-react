@@ -1,5 +1,5 @@
-import { useCallback, useContext, useEffect, useState } from "react"
-import { Navigate, useParams } from "react-router-dom"
+import { useContext, useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import axios from "axios"
 import { API_URL } from "../utils/constants"
 
@@ -20,7 +20,9 @@ function FeedPage() {
   const { username } = useParams()
   const [articles, setUserArticles] = useState([])
   const [userProfile, setUserProfile] = useState({})
-  console.log("userProfile:", userProfile)
+  const [numberOfArticles, setNumberOfArticles] = useState(0)
+
+  // loading
   const [isUserProfileLoading, setisUserProfileLoading] = useState(true)
 
   // API - get user
@@ -49,6 +51,7 @@ function FeedPage() {
       })
       .then((response) => {
         setUserArticles(response.data)
+        setNumberOfArticles(response.data.length)
       })
       .catch((error) => console.log(error))
   }
@@ -65,7 +68,7 @@ function FeedPage() {
     <p>loading</p>
   ) : (
     <section className="FeedPage relative mt-24 w-max m-auto">
-      <ProfileHeader {...userProfile} />
+      <ProfileHeader {...userProfile} numberOfArticles={numberOfArticles} />
       <ProfileTabs />
       <ProfilePosts articles={articles} />
     </section>

@@ -1,7 +1,7 @@
 import React from "react"
 import profilePlaceholder from "../assets/profile-placeholder.jpg"
 
-const ProfileHeader = ({ image, username, name }) => {
+const ProfileHeader = ({ image, username, name, numberOfArticles }) => {
   return (
     <>
       <div className="max-w-lg w-96 mb-6 bg-white rounded-lg border border-gray-200 shadow-md ">
@@ -19,7 +19,7 @@ const ProfileHeader = ({ image, username, name }) => {
           </span> */}
           <div className="flex mt-4 space-x-10 lg:mt-6">
             <div>
-              <div className="text-gray-700">27</div>
+              <div className="text-gray-700">{numberOfArticles}</div>
               <div className="text-gray-500 text-sm">posts</div>
             </div>
             <div>
