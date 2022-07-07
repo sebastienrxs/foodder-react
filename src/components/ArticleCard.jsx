@@ -18,7 +18,7 @@ function ArticleCard({
       <div className=" ml-2 mt-2 mb-4">
         <div className="author-img"></div>
         <div className="author-name">
-          <Link to={`/${author?.username}`}>
+          <Link to={`/${author?.username}/posts`}>
             <div className="flex text-left">
               <div className=" mt-2 rounded-full h-10 w-10 bg-gray-00 border-violet-600 border-2 flex items-center justify-center overflow-hidden">
                 <img src={author?.image} alt="" />
