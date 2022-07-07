@@ -28,7 +28,7 @@ function Navbar() {
               </NavLink>
             </li>
 
-            <li className="hover:bg-gray-100">
+            {/* <li className="hover:bg-gray-100">
               <NavLink
                 to="/search"
                 className={({ isActive }) =>
@@ -38,7 +38,7 @@ function Navbar() {
               >
                 <SearchIcon className=" text-gray-800 w-5 h-5" />
               </NavLink>
-            </li>
+            </li> */}
 
             <li className="hover:bg-gray-100">
               <NavLink
@@ -68,7 +68,6 @@ function Navbar() {
       </nav>
 
       <main className="pt-24">
-        <SearchPage />
         <Outlet />
       </main>
     </>

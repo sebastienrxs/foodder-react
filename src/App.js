@@ -38,6 +38,7 @@ function App() {
             path="feed"
             element={
               <IsPrivate>
+                <SearchPage />
                 <FeedPage />
               </IsPrivate>
             }

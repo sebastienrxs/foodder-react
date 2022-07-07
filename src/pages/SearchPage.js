@@ -14,7 +14,6 @@ function SearchPage() {
 
   return (
     <>
-      <div>SEARCH BAR</div>
       <SearchCountryBar
         setCountriesList={setCountriesList}
         countriesList={countriesList}
