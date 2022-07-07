@@ -57,7 +57,7 @@ function Navbar() {
 
             <li className="hover:bg-gray-100">
               <NavLink
-                to={username}
+                to={`${username}/posts`}
                 className={({ isActive }) =>
                   "h-16 px-6 flex justify-center items-center w-full" +
                   (isActive ? " rounded bg-gray-200" : "")

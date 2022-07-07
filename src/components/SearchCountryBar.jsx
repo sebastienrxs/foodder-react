@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react"
+import React, { useContext, useEffect } from "react"
 import { Multiselect } from "multiselect-react-dropdown"
 import axios from "axios"
 import { API_URL } from "../utils/constants"
@@ -24,7 +24,6 @@ const SearchCountryBar = ({
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        console.log("response:", response)
         setCountriesList(
           response.data.map((el) => {
             return { value: el.cca2, label: el._id }
@@ -52,11 +51,8 @@ const SearchCountryBar = ({
           isObject={true}
           options={countriesList}
           displayValue="label"
-
-
           selectedValues={countriesList.filter((x) =>
             selectedCountries.includes(x.value)
-
           )}
           onSelect={updateValues}
           onRemove={updateValues}

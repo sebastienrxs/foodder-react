@@ -1,5 +1,5 @@
-import { useCallback, useContext, useEffect, useState } from "react"
-import { Navigate, useParams } from "react-router-dom"
+import { useContext, useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import axios from "axios"
 import { API_URL } from "../utils/constants"
 
@@ -8,41 +8,49 @@ import { AuthContext } from "../context/auth.context"
 import { FavContext } from "../context/fav.context"
 
 // Components
-import ArticlePreview from "../components/ArticlePreview"
 import ProfileHeader from "../components/ProfileHeader"
 import ProfileTabs from "../components/ProfileTabs"
-import ProfilePosts from "../components/ProfilePosts"
+import ProfilePageMap from "../components/ProfilePageMap"
 
-function FeedPage() {
+function MapPage() {
   // hooks
   const { user, isLoggedIn } = useContext(AuthContext)
-  const { userFavorites } = useContext(FavContext)
   const { getToken } = useContext(AuthContext)
   const { username } = useParams()
-  const [articles, setUserArticles] = useState([])
+  const [userProfile, setUserProfile] = useState({})
+  const [numberOfArticles, setNumberOfArticles] = useState(0)
 
-  // API call
-  const getUserArticles = () => {
+  // loading
+  const [isUserProfileLoading, setisUserProfileLoading] = useState(true)
+
+  // API - get user
+  const getUserProfile = () => {
     const storedToken = getToken()
 
     axios
-      .get(`${API_URL}/articles/user/${username}`, {
+      .get(`${API_URL}/user/${username}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
-      .then((response) => setUserArticles(response.data))
+      .then((response) => {
+        setUserProfile(response.data)
+        setisUserProfileLoading(false)
+      })
+
       .catch((error) => console.log(error))
   }
-
   useEffect(() => {
-    getUserArticles()
+    getUserProfile()
   }, [])
 
-  return (
+  return isUserProfileLoading ? (
+    <p>loading</p>
+  ) : (
     <section className="FeedPage relative mt-24 w-max m-auto">
-      <ProfileHeader />
+      <ProfileHeader {...userProfile} numberOfArticles={numberOfArticles} />
       <ProfileTabs />
+      <ProfilePageMap />
     </section>
   )
 }
 
-export default FeedPage
+export default MapPage

@@ -28,8 +28,6 @@ function FeedPage() {
 
     const params = Object.fromEntries(searchParams.entries())
 
-    console.log("running getAllArticles", { params })
-
     axios
       .get(`/articles`, {
         params,
@@ -40,8 +38,6 @@ function FeedPage() {
         setArticles(response.data)
       })
       .catch((error) => console.log(error))
-
-    console.log("—————— DID AN AXIOS ————————————")
   }, [searchParams, getToken])
 
   // Set articles with key "isFav"
