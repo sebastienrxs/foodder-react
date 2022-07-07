@@ -33,6 +33,7 @@ function ArticleCard({
       .then((response) => {
         console.log("response:", response)
         navigate("/feed")
+        window.location.reload(false)
       })
       .catch((error) => console.log(error))
   }
