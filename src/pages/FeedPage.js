@@ -76,6 +76,7 @@ function FeedPage() {
       ) : (
         <section className="FeedPage relative mt-24 w-max m-auto">
           {articleWithFavorites.map((article) => {
+            console.log("article:", article)
             return (
               <ArticleCard
                 key={article._id}

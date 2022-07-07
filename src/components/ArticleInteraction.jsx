@@ -68,17 +68,17 @@ const ArticleInteraction = ({ _id, isFav, getAllArticles, setFavorites }) => {
   }
 
   return (
-    <div className="article-commands">
-      <FontAwesomeIcon icon={faHeart} className="icon" />
-      <FontAwesomeIcon icon={faComment} className="icon" />
+    <div>
+      {/* <FontAwesomeIcon icon={faHeart} className="icon" />
+      <FontAwesomeIcon icon={faComment} className="icon" /> */}
 
       {isFav ? (
         <button onClick={handleDeleteFav}>
-          <BookmarkIconSolid className="h-5 w-5 mx-3 inline text-green-500" />
+          <BookmarkIconSolid className="h-6 w-6 inline text-purple-500" />
         </button>
       ) : (
         <button onClick={handleCreateFav}>
-          <BookmarkIcon className="h-5 w-5 inline mx-3 text-gray-500" />
+          <BookmarkIcon className="h-6 w-6 inline text-purple-500" />
         </button>
       )}
     </div>
