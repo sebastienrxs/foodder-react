@@ -36,7 +36,7 @@ function FeedPage() {
       })
       .then((response) => {
         setUserProfile(response.data)
-        // setisUserProfileLoading(false)
+        setisUserProfileLoading(false)
       })
 
       .catch((error) => console.log(error))

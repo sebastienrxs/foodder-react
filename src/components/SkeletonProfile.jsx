@@ -4,9 +4,17 @@ import React from "react"
 
 const SkeletonProfile = (props) => {
   return (
-    <ContentLoader viewBox="0 0 500 280" height={280} width={500} {...props}>
-      <circle cx="230" cy="50" r="30" />
-      <rect x="160" y="90" rx="0" ry="0" width="140" height="25" />
+    <ContentLoader
+      speed={2}
+      width={400}
+      height={460}
+      viewBox="0 0 400 460"
+      backgroundColor="#f3f3f3"
+      foregroundColor="#ecebeb"
+      {...props}
+    >
+      <circle cx="201" cy="153" r="55" />
+      <rect x="27" y="234" rx="0" ry="0" width="347" height="43" />
     </ContentLoader>
   )
 }
