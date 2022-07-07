@@ -9,6 +9,7 @@ import { FavContext } from "../context/fav.context"
 // Components
 import ArticleCard from "../components/ArticleCard"
 import { useSearchParams } from "react-router-dom"
+import SkeletonArticleFeed from "../components/SkeletonArticleFeed"
 
 function FeedPage() {
   // Contexts
@@ -19,6 +20,7 @@ function FeedPage() {
   const [searchParams] = useSearchParams()
   const [articles, setArticles] = useState([])
   const [articleWithFavorites, setFavorites] = useState([])
+  const [isLoading, setisLoading] = useState(true)
 
   // Get articles and set them
   const getAllArticles = useCallback(() => {
@@ -50,6 +52,7 @@ function FeedPage() {
       return element
     })
     setFavorites(loadedFavs)
+    setisLoading(false)
   }, [articles, userFavorites])
 
   useEffect(() => {
@@ -62,11 +65,14 @@ function FeedPage() {
 
   return (
     <>
-      {articles.length === 0 ? (
-        <div>Loading</div>
+      {isLoading ? (
+        <section className="FeedPage relative mt-24 w-max m-auto">
+          <SkeletonArticleFeed />
+        </section>
       ) : (
         <section className="FeedPage relative mt-24 w-max m-auto">
           {articleWithFavorites.map((article) => {
+            console.log("article:", article)
             return (
               <ArticleCard
                 key={article._id}
