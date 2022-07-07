@@ -21,6 +21,10 @@ _All data in the cloud is stored in Europe._
 
 https://documenter.getpostman.com/view/21219252/UzBiPULQ
 
+## Back-end repo
+
+https://github.com/hugo-cornu/foodder-backend
+
 ## Deployed API
 
 https://foodder.herokuapp.com/
