@@ -1,34 +1,31 @@
-import { useCallback, useContext, useEffect, useState } from "react"
 import axios from "axios"
+import { useCallback, useContext, useEffect, useState } from "react"
 import { API_URL } from "../utils/constants"
 
 // Context
 import { AuthContext } from "../context/auth.context"
-import { FavContext } from "../context/fav.context"
 
 // Components
-import ArticleCard from "../components/ArticleCard"
 import { useNavigate, useParams, useSearchParams } from "react-router-dom"
 import SkeletonArticleFeed from "../components/SkeletonArticleFeed"
 
 function EditArticle() {
   // Contexts
-  const { userFavorites } = useContext(FavContext)
   const { getToken } = useContext(AuthContext)
   const { articleId } = useParams()
   const navigate = useNavigate()
 
   // States
   const [searchParams] = useSearchParams()
-  const [article, setArticle] = useState([])
   const [isLoading, setisLoading] = useState(true)
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
 
-  // Get article and set it
+  // Get article
   const getOneArticleById = useCallback(() => {
     const storedToken = getToken()
 
+    // API Call
     axios
       .get(`${API_URL}/articles/${articleId}`, {
         params: searchParams,
@@ -45,6 +42,7 @@ function EditArticle() {
       .catch((error) => console.log(error))
   }, [searchParams, getToken])
 
+  // Handle submit
   const handleFormSubmit = (e) => {
     e.preventDefault()
     const storedToken = getToken()

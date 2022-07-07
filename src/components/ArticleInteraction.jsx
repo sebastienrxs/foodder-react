@@ -28,8 +28,6 @@ const ArticleInteraction = ({ _id, isFav, getAllArticles, setFavorites }) => {
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
-        console.log("response.data:", response.data)
-
         getAllArticles()
         getUserFavorites()
       })
@@ -48,7 +46,6 @@ const ArticleInteraction = ({ _id, isFav, getAllArticles, setFavorites }) => {
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
-        console.log("response.data:", response.data)
         getAllArticles()
         getUserFavorites()
       })
