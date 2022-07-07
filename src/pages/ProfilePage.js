@@ -5,7 +5,6 @@ import { API_URL } from "../utils/constants"
 
 // Context
 import { AuthContext } from "../context/auth.context"
-import { FavContext } from "../context/fav.context"
 
 // Components
 import ProfileHeader from "../components/ProfileHeader"
@@ -15,8 +14,6 @@ import SkeletonProfile from "../components/SkeletonProfile"
 
 function ProfilePage() {
   // hooks
-  const { user, isLoggedIn } = useContext(AuthContext)
-  const { userFavorites } = useContext(FavContext)
   const { getToken } = useContext(AuthContext)
   const { username } = useParams()
   const [articles, setUserArticles] = useState([])

@@ -5,7 +5,6 @@ import { API_URL } from "../utils/constants"
 
 // Context
 import { AuthContext } from "../context/auth.context"
-import { FavContext } from "../context/fav.context"
 
 // Components
 import ProfileHeader from "../components/ProfileHeader"
@@ -14,11 +13,10 @@ import ProfilePageMap from "../components/ProfilePageMap"
 
 function MapPage() {
   // hooks
-  const { user, isLoggedIn } = useContext(AuthContext)
   const { getToken } = useContext(AuthContext)
   const { username } = useParams()
   const [userProfile, setUserProfile] = useState({})
-  const [numberOfArticles, setNumberOfArticles] = useState(0)
+  const [numberOfArticles] = useState(0)
 
   // loading
   const [isUserProfileLoading, setisUserProfileLoading] = useState(true)

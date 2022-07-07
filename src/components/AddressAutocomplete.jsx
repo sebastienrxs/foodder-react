@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react"
+import axios from "axios"
+import { useContext, useState } from "react"
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete"
-import axios from "axios"
-import { API_URL } from "../utils/constants"
 import { AuthContext } from "../context/auth.context"
+import { API_URL } from "../utils/constants"
 
 // const baseUrl = process.env.REACT_APP_BACKEND_URL
 

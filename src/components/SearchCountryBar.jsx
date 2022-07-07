@@ -14,8 +14,6 @@ const SearchCountryBar = ({
 }) => {
   const { getToken } = useContext(AuthContext)
 
-  console.log("countriesList:", countriesList)
-
   // GET THE LIST OF COUNTRIES WHICH THE USER CAN FILTER ON
   useEffect(() => {
     const storedToken = getToken()

@@ -1,4 +1,3 @@
-import React from "react"
 import profilePlaceholder from "../assets/profile-placeholder.jpg"
 
 const ProfileHeader = ({ image, username, name, numberOfArticles }) => {
@@ -13,10 +12,6 @@ const ProfileHeader = ({ image, username, name, numberOfArticles }) => {
             alt="user"
           />
           <h5 className="mb-1 text-xl font-medium text-gray-900 ">{name}</h5>
-          <p className="mb-1 text-md font-medium text-gray-500 ">@{username}</p>
-          {/* <span className="text-sm text-gray-500 ">
-            Visual Designer
-          </span> */}
           <div className="flex mt-4 space-x-10 lg:mt-6">
             <div>
               <div className="text-gray-700">{numberOfArticles}</div>
