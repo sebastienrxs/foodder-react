@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom"
 import ArticleInteraction from "./ArticleInteraction"
-import { CheckCircleIcon, LocationMarkerIcon } from "@heroicons/react/solid"
+import {
+  CheckCircleIcon,
+  LocationMarkerIcon,
+  PencilAltIcon,
+} from "@heroicons/react/solid"
+import { useContext } from "react"
+import { AuthContext } from "../context/auth.context"
 
 function ArticleCard({
   title,
@@ -13,10 +19,11 @@ function ArticleCard({
   getAllArticles,
   setFavorites,
 }) {
+  const { user } = useContext(AuthContext)
+  console.log("user:", user)
   return (
     <article className=" max-w-md rounded-lg shadow border mb-8">
-      <div className=" ml-2 mt-2 mb-4">
-        <div className="author-img"></div>
+      <div className=" ml-2 mt-2 mb-4 flex justify-between">
         <div className="author-name">
           <Link to={`/${author?.username}/posts`}>
             <div className="flex text-left">
@@ -36,6 +43,12 @@ function ArticleCard({
             </div>
           </Link>
         </div>
+
+        {user.payload.username === author.username && (
+          <Link to={`/articles/edit/${_id}`} className="justify-end px-4 pt-2">
+            <PencilAltIcon className="h-6 text-violet-600 inline ml-1" />
+          </Link>
+        )}
       </div>
       <picture className="article-img">
         <img src={image} className=" h-96 w-96 object-cover" alt="" />

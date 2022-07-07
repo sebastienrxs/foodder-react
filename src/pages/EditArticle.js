@@ -94,8 +94,8 @@ function EditArticle() {
                 className="block"
               />
 
-              <button type="submit" className="block btn-nav">
-                Update Project
+              <button type="submit" className="block btn-nav mt-4">
+                Update post
               </button>
             </form>
           </div>
