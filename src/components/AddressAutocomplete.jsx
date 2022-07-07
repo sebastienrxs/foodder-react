@@ -1,5 +1,8 @@
 import React, { useState, useContext } from "react"
-import PlacesAutocomplete, { geocodeByAddress } from "react-places-autocomplete"
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from "react-places-autocomplete"
 import axios from "axios"
 import { API_URL } from "../utils/constants"
 import { AuthContext } from "../context/auth.context"
@@ -9,6 +12,8 @@ import { AuthContext } from "../context/auth.context"
 function AddressAutocomplete() {
   // States for Google API's input -> Search for city
   const [address, setAddress] = useState("")
+  const [latLngApi, setLatLngApi] = useState({})
+  console.log("latLngApi:", latLngApi)
   const [data, setData] = useState({})
 
   // States for the other inputs of the form
@@ -27,6 +32,9 @@ function AddressAutocomplete() {
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value)
+    const latLng = await getLatLng(results[0])
+    setLatLngApi(latLng)
+    console.log("latLng:", latLng)
 
     const adressComponent = results[0].address_components
     const myObject = {}
@@ -61,6 +69,8 @@ function AddressAutocomplete() {
     fd.append("country", country)
     fd.append("cca2", cca2)
     fd.append("city", city)
+    fd.append("lat", latLngApi.lat)
+    fd.append("lng", latLngApi.lng)
 
     axios
       .post(`${API_URL}/articles`, fd, {

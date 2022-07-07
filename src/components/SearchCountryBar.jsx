@@ -24,7 +24,6 @@ const SearchCountryBar = ({
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        console.log("response:", response)
         setCountriesList(
           response.data.map((el) => {
             return { value: el.cca2, label: el._id }

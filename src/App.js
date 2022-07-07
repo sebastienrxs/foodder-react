@@ -16,6 +16,7 @@ import SearchPage from "./pages/SearchPage"
 import NavbarApp from "./components/NavbarApp"
 import IsPrivate from "./components/IsPrivate"
 import NavbarHome from "./components/NavbarHome"
+import MapPage from "./pages/MapPage"
 
 function App() {
   return (
@@ -60,7 +61,7 @@ function App() {
             path=":username/map"
             element={
               <IsPrivate>
-                <ProfilePage />
+                <MapPage />
               </IsPrivate>
             }
           />

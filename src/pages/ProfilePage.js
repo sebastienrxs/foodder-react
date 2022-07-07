@@ -19,6 +19,7 @@ function FeedPage() {
   const { getToken } = useContext(AuthContext)
   const { username } = useParams()
   const [articles, setUserArticles] = useState([])
+  console.log("articles:", articles)
   const [userProfile, setUserProfile] = useState({})
   const [numberOfArticles, setNumberOfArticles] = useState(0)
 
