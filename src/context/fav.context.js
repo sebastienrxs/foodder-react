@@ -14,7 +14,6 @@ const FavContext = createContext()
 
 const FavContextWrapper = ({ children }) => {
   const [userFavorites, setFavorites] = useState([])
-  // console.log("userFavorites:", userFavorites)
   const { getToken, user } = useContext(AuthContext)
 
   const getUserFavorites = useCallback(() => {

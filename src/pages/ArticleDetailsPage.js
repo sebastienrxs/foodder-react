@@ -22,7 +22,6 @@ function ArticlesDetailsPage() {
   const [articles, setArticles] = useState([])
   const [isLoading, setisLoading] = useState(true)
 
-  console.log("articles:", articles)
   // all articles, with added key "isFav"
   const [articleWithFavorites, setFavorites] = useState([])
 

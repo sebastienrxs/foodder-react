@@ -58,7 +58,6 @@ const ProfilePageMap = () => {
         >
           {articles.length > 0 &&
             articles.map((article) => {
-              console.log(article.city)
               return (
                 <Marker
                   key={article.city.cityName}

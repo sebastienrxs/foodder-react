@@ -9,7 +9,6 @@ const ProfilePosts = ({ articles }) => {
   ) : (
     <div className="flex flex-wrap w-96">
       {articles.map((article) => {
-        console.log("article:", article)
         return (
           <Link to={`/articles/${article._id}`} key={article.title}>
             <article className=" text-left mb-14 bg-white rounded-lg">
