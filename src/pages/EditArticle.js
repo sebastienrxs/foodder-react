@@ -72,31 +72,34 @@ function EditArticle() {
           <SkeletonArticleFeed />
         </section>
       ) : (
-        <section className="FeedPage relative mt-24 w-max m-auto">
+        <section className="FeedPage relative mt-24 max-w-md m-auto">
           <div className="EditProjectPage">
-            <h3>Edit the Project</h3>
-
             <form onSubmit={handleFormSubmit}>
-              <label>Title:</label>
-              <input
-                type="text"
-                name="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="block"
-              />
+              <div className="mx-auto my-9 flex flex-col w-full max-w-md my-30 px-4 py-8 bg-white rounded-lg drop-shadow-md border-t-4 border-blue-100">
+                <input
+                  type="text"
+                  name="title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
 
-              <label>Description:</label>
-              <textarea
-                name="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                className="block"
-              />
+                <div className="mb-3 mt-3">
+                  <textarea
+                    name="description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  />
+                </div>
 
-              <button type="submit" className="block btn-nav mt-4">
-                Update post
-              </button>
+                <button
+                  type="submit"
+                  className="my-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+                >
+                  Update your post
+                </button>
+              </div>
             </form>
           </div>
         </section>
