@@ -11,6 +11,7 @@ import { FavContext } from "../context/fav.context"
 import ProfileHeader from "../components/ProfileHeader"
 import ProfileTabs from "../components/ProfileTabs"
 import ProfilePosts from "../components/ProfilePosts"
+import SkeletonProfile from "../components/SkeletonProfile"
 
 function FeedPage() {
   // hooks
@@ -65,7 +66,9 @@ function FeedPage() {
   }, [])
 
   return isUserProfileLoading ? (
-    <p>loading</p>
+    <section className="FeedPage relative mt-24 w-max m-auto">
+      <SkeletonProfile />
+    </section>
   ) : (
     <section className="FeedPage relative mt-24 w-max m-auto">
       <ProfileHeader {...userProfile} numberOfArticles={numberOfArticles} />
