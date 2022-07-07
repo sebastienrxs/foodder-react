@@ -13,7 +13,7 @@ import SkeletonArticleFeed from "../components/SkeletonArticleFeed"
 
 function ArticlesDetailsPage() {
   // Contexts
-  const { user, isLoggedIn, isLoading } = useContext(AuthContext)
+  const { user, isLoggedIn } = useContext(AuthContext)
   const { userFavorites } = useContext(FavContext)
   const { getToken } = useContext(AuthContext)
   const { articleId } = useParams()
@@ -21,6 +21,8 @@ function ArticlesDetailsPage() {
   // States
   const [searchParams, setSearchParams] = useSearchParams()
   const [articles, setArticles] = useState([])
+  const [isLoading, setisLoading] = useState(true)
+
   console.log("articles:", articles)
   // all articles, with added key "isFav"
   const [articleWithFavorites, setFavorites] = useState([])
@@ -37,6 +39,7 @@ function ArticlesDetailsPage() {
       })
       .then((response) => {
         setArticles([response.data])
+        setisLoading(false)
       })
       .catch((error) => console.log(error))
   }, [searchParams, getToken])
@@ -65,8 +68,10 @@ function ArticlesDetailsPage() {
 
   return (
     <>
-      {articles.length === 0 ? (
-        <SkeletonArticleFeed />
+      {isLoading ? (
+        <section className="FeedPage relative mt-24 w-max m-auto">
+          <SkeletonArticleFeed />
+        </section>
       ) : (
         <section className="FeedPage relative mt-24 w-max m-auto">
           {articleWithFavorites.map((article) => {
