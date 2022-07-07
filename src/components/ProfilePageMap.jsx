@@ -53,7 +53,7 @@ const ProfilePageMap = () => {
   }, [])
 
   return (
-    <div>
+    <div className="mb-24">
       <Wrapper apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
         <GoogleMap
           id="map"
