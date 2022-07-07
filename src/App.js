@@ -17,6 +17,7 @@ import NavbarApp from "./components/NavbarApp"
 import IsPrivate from "./components/IsPrivate"
 import NavbarHome from "./components/NavbarHome"
 import MapPage from "./pages/MapPage"
+import EditArticle from "./pages/EditArticle"
 
 function App() {
   return (
@@ -70,6 +71,14 @@ function App() {
             element={
               <IsPrivate>
                 <ArticleDetailsPage />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="articles/edit/:articleId"
+            element={
+              <IsPrivate>
+                <EditArticle />
               </IsPrivate>
             }
           />
