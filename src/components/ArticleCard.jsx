@@ -1,12 +1,11 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import ArticleInteraction from "./ArticleInteraction"
-import {
-  CheckCircleIcon,
-  LocationMarkerIcon,
-  PencilAltIcon,
-} from "@heroicons/react/solid"
+import { CheckCircleIcon, LocationMarkerIcon } from "@heroicons/react/solid"
+import { TrashIcon, PencilAltIcon } from "@heroicons/react/outline"
 import { useContext } from "react"
 import { AuthContext } from "../context/auth.context"
+import axios from "axios"
+import { API_URL } from "../utils/constants"
 
 function ArticleCard({
   title,
@@ -20,7 +19,23 @@ function ArticleCard({
   setFavorites,
 }) {
   const { user } = useContext(AuthContext)
-  console.log("user:", user)
+  const { getToken } = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  const handleDeletePost = () => {
+    const storedToken = getToken()
+
+    // API Call
+    axios
+      .delete(`${API_URL}/articles/${_id}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        console.log("response:", response)
+        navigate("/feed")
+      })
+      .catch((error) => console.log(error))
+  }
   return (
     <article className=" max-w-md rounded-lg shadow border mb-8">
       <div className=" ml-2 mt-2 mb-4 flex justify-between">
@@ -45,9 +60,20 @@ function ArticleCard({
         </div>
 
         {user.payload.username === author.username && (
-          <Link to={`/articles/edit/${_id}`} className="justify-end px-4 pt-2">
-            <PencilAltIcon className="h-6 text-violet-600 inline ml-1" />
-          </Link>
+          <div>
+            <Link
+              to={`/articles/edit/${_id}`}
+              className="justify-end px-4 pt-2"
+            >
+              <PencilAltIcon className="h-6 text-gray-400 inline ml-1" />
+            </Link>
+            <button
+              onClick={handleDeletePost}
+              className="justify-end px-4 pt-2"
+            >
+              <TrashIcon className="h-6 text-gray-400 inline ml-1" />
+            </button>
+          </div>
         )}
       </div>
       <picture className="article-img">
