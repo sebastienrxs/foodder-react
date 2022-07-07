@@ -7,7 +7,6 @@ import {
   SearchIcon,
   UserCircleIcon,
 } from "@heroicons/react/outline"
-import SearchPage from "../pages/SearchPage"
 
 function Navbar() {
   const username = "bobby"
