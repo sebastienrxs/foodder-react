@@ -68,7 +68,7 @@ function ProfilePage() {
       <SkeletonProfile />
     </section>
   ) : (
-    <section className="ProfilePage relative mt-24 w-max m-auto">
+    <section className="ProfilePage relative w-max m-auto">
       <ProfileHeader {...userProfile} numberOfArticles={numberOfArticles} />
       <ProfileTabs />
       <ProfilePosts articles={articles} />

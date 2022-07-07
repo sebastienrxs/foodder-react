@@ -43,9 +43,10 @@ const SearchCountryBar = ({
 
   return (
     <>
-      <div className="countries-list">
+      <div className="countries-list ">
         <Multiselect
-          className="select"
+          className="select "
+          placeholder="Filter by country"
           isObject={true}
           options={countriesList}
           displayValue="label"
