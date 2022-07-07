@@ -36,7 +36,7 @@ function HomePage() {
               FEATURED IN
             </span>
             <div className="flex flex-wrap justify-center items-center mt-8 text-gray-500 sm:justify-between">
-              <a
+              <div
                 href="#"
                 className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400"
               >
@@ -83,8 +83,8 @@ function HomePage() {
                     fill="currentColor"
                   />
                 </svg>
-              </a>
-              <a
+              </div>
+              <div
                 href="#"
                 className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400"
               >
@@ -107,8 +107,8 @@ function HomePage() {
                     fill="currentColor"
                   />
                 </svg>
-              </a>
-              <a
+              </div>
+              <div
                 href="#"
                 className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400"
               >
@@ -135,7 +135,7 @@ function HomePage() {
                     fill="currentColor"
                   />
                 </svg>
-              </a>
+              </div>
             </div>
           </div>
         </div>

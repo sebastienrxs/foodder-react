@@ -31,10 +31,10 @@ const ProfilePageMap = () => {
 
   const [articles, setUserArticles] = useState([])
 
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    libraries,
-  })
+  // const { isLoaded, loadError } = useLoadScript({
+  //   googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+  //   libraries,
+  // })
 
   // API - get user's articles
   const getUserArticles = () => {
