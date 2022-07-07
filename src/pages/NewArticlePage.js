@@ -11,7 +11,6 @@ function NewArticlePage() {
 
   return (
     <main>
-      <h1>NewArticlePage</h1>
       <AddressAutocomplete />
     </main>
   )
