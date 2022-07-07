@@ -17,9 +17,11 @@ React | Nodejs | Express | MongoDB
 
 _All data in the cloud is stored in Europe._
 
-## Documentation
 
-https://documenter.getpostman.com/view/21219252/UzBiPULQ
+## Deployed React app
+
+https://foodder.netlify.app/
+
 
 ## Back-end repo
 
@@ -29,6 +31,7 @@ https://github.com/hugo-cornu/foodder-backend
 
 https://foodder.herokuapp.com/
 
-## Deployed Client
+## API Documentation
 
-https://foodder.netlify.app/
+https://documenter.getpostman.com/view/21219252/UzBiPULQ
+
