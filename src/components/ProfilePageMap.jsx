@@ -1,15 +1,13 @@
-import React from "react"
+import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api"
+import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
-import axios from "axios"
 import { API_URL } from "../utils/constants"
+import { Wrapper } from "@googlemaps/react-wrapper"
+import mapStyles from "../components/profilePageMapStyles"
 
 // Context
 import { AuthContext } from "../context/auth.context"
-
-import mapStyles from "../components/profilePageMapStyles"
-import { Wrapper } from "@googlemaps/react-wrapper"
 
 const libraries = ["places"]
 const mapContainerStyle = {
@@ -32,11 +30,6 @@ const ProfilePageMap = () => {
   const { username } = useParams()
 
   const [articles, setUserArticles] = useState([])
-  console.log("articles:", articles)
-  console.log("articles0city:", articles[0])
-  // console.log("articles.city.cityName:", articles[0].city.cityName)
-  // console.log("articles.city.lat:", articles[0].city.lat)
-  // console.log("articles.city.lng:", articles[0].city.lng)
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,

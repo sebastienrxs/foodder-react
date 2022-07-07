@@ -1,18 +1,15 @@
-import { useContext } from "react"
-import { Link, NavLink, Outlet } from "react-router-dom"
-import { AuthContext } from "../context/auth.context"
+import { NavLink, Outlet } from "react-router-dom"
 
 // Icons
 import {
   HomeIcon,
-  SearchIcon,
   PlusIcon,
+  SearchIcon,
   UserCircleIcon,
 } from "@heroicons/react/outline"
 import SearchPage from "../pages/SearchPage"
 
 function Navbar() {
-  const { isLoggedIn, user, removeToken } = useContext(AuthContext)
   const username = "bobby"
   return (
     <>

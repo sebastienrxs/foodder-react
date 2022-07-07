@@ -1,12 +1,10 @@
-import { useContext, useState } from "react"
 import axios from "axios"
-import { Link, useNavigate } from "react-router-dom"
+import { useContext, useState } from "react"
 import { AuthContext } from "../context/auth.context"
 import { API_URL } from "../utils/constants"
 
 // Icons
 import { UserIcon } from "@heroicons/react/solid"
-import { LockOpenIcon } from "@heroicons/react/solid"
 
 // Page
 function LoginPage(props) {
@@ -16,8 +14,6 @@ function LoginPage(props) {
   const [errorMessage, setErrorMessage] = useState(undefined)
 
   const { storeToken } = useContext(AuthContext)
-
-  const navigate = useNavigate()
 
   // Handle inputs + submit
   const handleEmail = (e) => setEmail(e.target.value)

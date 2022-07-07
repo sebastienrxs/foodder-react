@@ -13,13 +13,12 @@ import SkeletonArticleFeed from "../components/SkeletonArticleFeed"
 
 function ArticlesDetailsPage() {
   // Contexts
-  const { user, isLoggedIn } = useContext(AuthContext)
   const { userFavorites } = useContext(FavContext)
   const { getToken } = useContext(AuthContext)
   const { articleId } = useParams()
 
   // States
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
   const [articles, setArticles] = useState([])
   const [isLoading, setisLoading] = useState(true)
 
