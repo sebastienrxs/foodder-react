@@ -6,9 +6,9 @@ import { ChevronRightIcon } from "@heroicons/react/outline"
 function HomePage() {
   const { isLoggedIn, isLoading } = useContext(AuthContext)
 
-  if (isLoading) {
-    return <p>loading...</p>
-  }
+  // if (isLoading) {
+  //   return <p>loading...</p>
+  // }
 
   if (isLoggedIn) {
     // If the user is logged in, navigate to FeedPage
@@ -17,7 +17,7 @@ function HomePage() {
 
   return (
     <>
-      <section className="bg-gradient-to-b from-sky-100 to-sky-10">
+      <section className="bg-gradient-to-b from-purple-100 to-purple-10">
         <div className="py-8 px-4 mx-auto pt-20 max-w-screen-xl text-center lg:py-16 lg:px-12">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
             Share and discover the best culinary experiences.
@@ -26,7 +26,10 @@ function HomePage() {
             Share the best things you ate. Discover your next favorite dish.
           </p>
           <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-            <Link to="/signup" className="btn-icon">
+            <Link
+              to="/signup"
+              className="btn-icon bg-purple-700 hover:bg-purple-900"
+            >
               Create an account
               <ChevronRightIcon className=" ml-4 w-5 h-5" />
             </Link>

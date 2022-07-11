@@ -94,3 +94,11 @@ margin-bottom: 2rem;
 .article-location {
   background-color: var(--grey-300);
 }
+
+
+/* SEARCH BAR */
+
+
+.highlightOption, .chip, .multiSelectContainer li:hover {
+  background-color: #9333ea !important;
+}
