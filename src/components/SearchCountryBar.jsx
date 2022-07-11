@@ -15,6 +15,7 @@ const SearchCountryBar = ({
   const { getToken } = useContext(AuthContext)
 
   // GET THE LIST OF COUNTRIES WHICH THE USER CAN FILTER ON
+  // Retun list of unique coutries
   useEffect(() => {
     const storedToken = getToken()
     axios
