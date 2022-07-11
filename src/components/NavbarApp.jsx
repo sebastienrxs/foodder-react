@@ -6,10 +6,17 @@ import {
   PlusIcon,
   SearchIcon,
   UserCircleIcon,
+  LogoutIcon,
 } from "@heroicons/react/outline"
+
+import { AuthContext } from "../context/auth.context"
+import { useContext } from "react"
 
 function Navbar() {
   const username = "bobby"
+  const { removeToken } = useContext(AuthContext)
+  console.log("removeToken:", removeToken)
+
   return (
     <>
       <nav className="fixed w-full z-50 top-0">
@@ -61,6 +68,15 @@ function Navbar() {
               >
                 <UserCircleIcon className=" text-gray-800 w-5 h-5" />
               </NavLink>
+            </li>
+
+            <li className="hover:bg-gray-100">
+              <button
+                onClick={removeToken}
+                className="h-16 px-6 flex justify-center items-center w-full"
+              >
+                <LogoutIcon className=" text-gray-800 w-5 h-5" />
+              </button>
             </li>
           </ul>
         </div>
