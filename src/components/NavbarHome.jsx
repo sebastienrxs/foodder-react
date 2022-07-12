@@ -12,11 +12,14 @@ function NavbarHome() {
           </span>
         </Link>
         <div className="flex md:order-2">
-          <Link to="/signup" className="btn-nav-outline">
+          <Link to="/signup" className="btn-nav-outline hover:text-purple-700">
             Sign-up
           </Link>
 
-          <Link to="/login" className="btn-nav">
+          <Link
+            to="/login"
+            className="btn-nav bg-purple-700 hover:bg-purple-900"
+          >
             Login
           </Link>
 
@@ -24,7 +27,7 @@ function NavbarHome() {
         </div>
         <Navbar.Collapse></Navbar.Collapse>
       </Navbar>
-      <main className="bg-gradient-to-b from-sky-100 to-sky-10">
+      <main className="bg-gradient-to-b from-purple-100 to-purple-10">
         <Outlet />
       </main>
     </>

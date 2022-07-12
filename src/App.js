@@ -26,7 +26,7 @@ function App() {
         <Route
           path="/"
           element={<NavbarHome />}
-          className="bg-gradient-to-b from-sky-100 to-sky-10"
+          className="bg-gradient-to-b from-purple-100 to-purple-10"
         >
           <Route path="" element={<HomePage />} />
           <Route path="signup" element={<SignupPage />} />
