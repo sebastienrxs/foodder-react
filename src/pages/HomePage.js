@@ -34,7 +34,7 @@ function HomePage() {
               <ChevronRightIcon className=" ml-4 w-5 h-5" />
             </Link>
           </div>
-          <div className="px-4 mx-auto mt-20 text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36">
+          {/* <div className="px-4 mx-auto mt-20 text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36">
             <span className="font-semibold text-gray-400 uppercase">
               FEATURED IN
             </span>
@@ -140,7 +140,7 @@ function HomePage() {
                 </svg>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </>
