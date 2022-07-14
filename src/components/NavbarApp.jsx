@@ -13,8 +13,10 @@ import { AuthContext } from "../context/auth.context"
 import { useContext } from "react"
 
 function Navbar() {
-  const username = "bobby"
+  // const username = "bobby"
   const { removeToken } = useContext(AuthContext)
+  const { getToken, user } = useContext(AuthContext)
+  const username = user.payload.username
   console.log("removeToken:", removeToken)
 
   return (
