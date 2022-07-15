@@ -4,8 +4,8 @@ import logo from "../assets/logo.png"
 function NavbarHome() {
   return (
     <>
-      <nav class="bg-purple-100 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
-        <div class="container flex flex-wrap justify-between items-center mx-auto">
+      <nav className="bg-purple-100 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+        <div className="container flex flex-wrap justify-between items-center mx-auto">
           <Link to="/" className="flex">
             {/* <img src={logo} className="mr-3 h-6 sm:h-9" alt="Foodder Logo" /> */}
             <span className="self-center whitespace-nowrap text-xl font-bold text-gray-800 ">
@@ -13,7 +13,7 @@ function NavbarHome() {
             </span>
           </Link>
 
-          <div class="flex md:order-2">
+          <div className="flex md:order-2">
             <Link
               to="/signup"
               className="btn-nav-outline bg-transparent border-purple-700 border-2 hover:text-purple-700"
@@ -28,7 +28,7 @@ function NavbarHome() {
             </Link>
           </div>
           <div
-            class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1"
+            className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1"
             id="mobile-menu-4"
           ></div>
         </div>
