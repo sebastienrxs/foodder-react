@@ -60,7 +60,7 @@ function HomePage() {
       <footer className="p-4 bg-white text-center rounded-lg shadow dark:bg-gray-800">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
           <p>
-            © 2022 Foodder™. Foodder was built during a coding bootcamp by{" "}
+            Foodder was built during a coding bootcamp by{" "}
             <a
               href="https://www.linkedin.com/in/sebastienrs/"
               target="_blank"
