@@ -87,6 +87,7 @@ function AddressAutocomplete() {
       .catch((e) => {
         console.log(e)
         setErrorMessage(e.response.data.errorMessage)
+        setIsloading(false)
       })
   }
 
