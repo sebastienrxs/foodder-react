@@ -38,7 +38,7 @@ function ArticleCard({
       .catch((error) => console.log(error))
   }
   return (
-    <article className=" max-w-md rounded-lg shadow border mb-8">
+    <article className=" max-w-md rounded-lg w-full shadow border mb-8">
       <div className=" ml-2 mt-2 mb-4 flex justify-between">
         <div className="author-name">
           <Link to={`/${author?.username}/posts`}>

@@ -58,7 +58,7 @@ function LoginPage(props) {
 
   return (
     <div className="LoginPage pt-24">
-      <div className="flex">
+      <div className="flex p-5">
         <div className="m-auto flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg drop-shadow-md border-t-4 border-purple-500">
           <div className="self-center mb-6 text-xl font-medium text-gray-600 sm:text-2xl ">
             <h1>Login To Your Account</h1>

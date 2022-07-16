@@ -1,9 +1,13 @@
-import React from "react"
+import React, { useContext } from "react"
 import { MapIcon, CollectionIcon } from "@heroicons/react/outline"
 import { Link } from "react-router-dom"
+import { AuthContext } from "../context/auth.context"
 
 const ProfileTabs = () => {
-  const username = "bobby"
+  // const username = "bobby"
+  const { getToken, user } = useContext(AuthContext)
+  const username = user.payload.username
+
   return (
     <section className="border-b border-gray-200 mb-6 ">
       <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 ">
